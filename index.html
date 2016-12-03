@@ -7,9 +7,16 @@
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
   </head>
   <body>
+    <a-assets>
+      <img id="woodfloor" src="/assets/textures/woodfloor.jpg">
+    </a-assets>
+
     <a-scene>
-      <a-plane position="0 0 -10" rotation="0 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky color="#C0DFF5" material="color:#bdddf4;shader:flat" scale="-1 1 1" position="0 0 0" geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:20"></a-sky>
+      <a-entity position="0 1.6 0" camera="active:false;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera"></a-entity>
+
+      <a-entity position="0 0 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
+      <a-plane position="0 1.37 -4.67" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#0b43ac" geometry="primitive:box;width:3;height:3;depth:0.05" id="panel"></a-plane>
     </a-scene>
   </body>
 </html>
