@@ -11,6 +11,10 @@
   <body>
     <a-assets>
       <img id="woodfloor" src="/assets/textures/woodfloor.jpg">
+      
+      //table stuff
+      <a-asset-item id="table-obj" src="assets/models/mesa.obj"></a-asset-item>
+      <a-asset-item id="table-mtl" src="assets/models/mesa.mtl"></a-asset-item>
     </a-assets>
 
     <a-scene id = "scene">
@@ -28,7 +32,8 @@
       </a-entity>
 
       <a-entity position="0 0 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
-      <a-plane position="0 2.27 -4.67" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel"></a-plane>
+      <a-entity position="0 2.8 -7.32" id="table" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.05 0.05 0.05" color="#804040" material="color:#804040;opacity:1.0"></a-entity>
+      <a-plane position="0 4.57 -10.19" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel"></a-plane>
     </a-scene>
   </body>
 
@@ -54,7 +59,7 @@
           var galleryMesh = document.createElement("a-entity");
           galleryMesh.setAttribute("id", "testPlane");
           galleryMesh.setAttribute("obj-model", "obj: #gallery-obj; mtl: #gallery-mtl");
-          galleryMesh.setAttribute("position", "0 2 -3");
+          galleryMesh.setAttribute("position", "3.03 2.90 -7.39");
           galleryMesh.setAttribute("scale", ".005 .005 .005");
           aScene.appendChild(galleryMesh);
           tempPlane2 = true;
