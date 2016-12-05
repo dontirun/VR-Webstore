@@ -6,20 +6,58 @@
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
   </head>
+
+
   <body>
     <a-assets>
       <img id="woodfloor" src="/assets/textures/woodfloor.jpg">
     </a-assets>
 
-    <a-scene>
+    <a-scene id = "scene">
       <a-entity vive-controls="hand: left"></a-entity>
       <a-entity vive-controls="hand: right"></a-entity>
-
+      <div id ="temp">
+      </div>
       <a-sky color="#C0DFF5" material="color:#bdddf4;shader:flat" scale="-1 1 1" position="0 0 0" geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:20"></a-sky>
-      <a-entity position="0 1.6 0" camera="active:false;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera"></a-entity>
+      <a-entity position="0 1.6 0" camera="active:true;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
+        <a-entity cursor="fuse: false"
+            position="0 0 -1"
+            geometry="primitive: ring"
+            material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
 
       <a-entity position="0 0 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
       <a-plane position="0 2.27 -4.67" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel"></a-plane>
     </a-scene>
   </body>
+
+  <script>
+    var aScene = document.querySelector("a-scene");
+
+    //var COLORS = ['red', 'green', 'blue'];
+    var tempPlane2 =false;
+    document.querySelector('#panel').addEventListener('click', function () {
+      if(tempPlane2 == false){
+        var testPlane = document.createElement("a-sphere");
+        testPlane.setAttribute("id", "testPlane");
+        testPlane.setAttribute("position", "0 3 -3");
+        testPlane.setAttribute("width", "4");
+        testPlane.setAttribute("height", "4");
+        testPlane.setAttribute("material", "color:red; opacity:1.0");
+        aScene.appendChild(testPlane);
+        tempPlane2 = true;
+      }
+      else{
+        var testPlane = document.getElementById("testPlane");
+        aScene.removeChild(testPlane);
+        tempPlane2 = false;
+      }
+      //var randomIndex = Math.floor(Math.random() * COLORS.length);
+      //var ul = document.querySelector('temp')
+      //ul.innerHTML = '<a-plane position="3 2.27 -4.5" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:1" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel2"></a-plane>'
+    });
+
+
+  </script>
 </html>
