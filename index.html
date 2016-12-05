@@ -34,19 +34,30 @@
 
   <script>
     var aScene = document.querySelector("a-scene");
+    var assetList = document.querySelector("a-assets");
+
+    var galleryOBJ = document.createElement("a-asset-item");
+    galleryOBJ.setAttribute("id", "gallery-obj");
+    galleryOBJ.setAttribute("src", "assets/models/IronMan.obj");
+    assetList.appendChild(galleryOBJ);
+
+    var galleryMTL = document.createElement("a-asset-item");
+    galleryMTL.setAttribute("id", "gallery-mtl");
+    galleryMTL.setAttribute("src", "assets/models/IronMan.mtl");
+    assetList.appendChild(galleryMTL);
 
     //var COLORS = ['red', 'green', 'blue'];
     var tempPlane2 =false;
     document.querySelector('#panel').addEventListener('click', function () {
       if(tempPlane2 == false){
-        var testPlane = document.createElement("a-sphere");
-        testPlane.setAttribute("id", "testPlane");
-        testPlane.setAttribute("position", "0 3 -3");
-        testPlane.setAttribute("width", "4");
-        testPlane.setAttribute("height", "4");
-        testPlane.setAttribute("material", "color:red; opacity:1.0");
-        aScene.appendChild(testPlane);
-        tempPlane2 = true;
+
+          var galleryMesh = document.createElement("a-entity");
+          galleryMesh.setAttribute("id", "testPlane");
+          galleryMesh.setAttribute("obj-model", "obj: #gallery-obj; mtl: #gallery-mtl");
+          galleryMesh.setAttribute("position", "0 2 -3");
+          galleryMesh.setAttribute("scale", ".005 .005 .005");
+          aScene.appendChild(galleryMesh);
+          tempPlane2 = true;
       }
       else{
         var testPlane = document.getElementById("testPlane");
