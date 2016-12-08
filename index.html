@@ -11,10 +11,13 @@
   <body>
     <a-assets>
       <img id="woodfloor" src="/assets/textures/woodfloor.jpg">
-      
+      //bookshelf stuff
+      <a-asset-item id="bookshelf-obj" src="/assets/models/Shelves/RetroRoomDivider.obj"></a-asset-item>
+      <a-asset-item id="bookshelf-mtl" src="/assets/models/Shelves/RetroRoomDivider.mtl"></a-asset-item>
       //table stuff
-      <a-asset-item id="table-obj" src="assets/models/mesa.obj"></a-asset-item>
-      <a-asset-item id="table-mtl" src="assets/models/mesa.mtl"></a-asset-item>
+      <a-asset-item id="table-obj" src="/assets/models/mesa.obj"></a-asset-item>
+      <a-asset-item id="table-mtl" src="/assets/models/mesa.mtl"></a-asset-item>
+
     </a-assets>
 
     <a-scene id = "scene">
@@ -30,11 +33,17 @@
             material="color: black; shader: flat">
         </a-entity>
       </a-entity>
+      //  walls
+      <a-entity position="-8.57 5.1 0" id="left wall" rotation="1 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
+      <a-entity position="7.46 5.1 0" id="right wall" rotation="1 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"visible="true"></a-entity>
+      <a-entity position="-0.64 5.1 9.42" id="back wall" scale="16 10 1" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
+      <a-entity position="-0.69 5.1 -9.52" id="front wall" scale="16 10 1" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6" rotation="0 0 0" visible="true"></a-entity>
+      
 
       <a-entity position="0 0 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
-      <a-entity position="0 2.8 -7.32" id="table" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.05 0.05 0.05" color="#804040" material="color:#804040;opacity:1.0"></a-entity>
-      <a-plane position="0 4.57 -10.19" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel"></a-plane>
-    </a-scene>
+      <a-entity position="0 2.8 -5.17" id="table" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.05 0.05 0.05" color="#804040" material=""></a-entity>
+      <a-entity position="5.43 0.1 -0.46" id="shelf1" obj-model="obj:#bookshelf-obj;mtl:#bookshelf-mtl" scale="0.05 0.02 0.02" color="#804040" material="" rotation="0 90 0"></a-entity>      
+      <a-plane position="0 4.57 -7.99" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel"></a-plane>    </a-scene>
   </body>
 
   <script>
