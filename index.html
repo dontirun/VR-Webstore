@@ -5,6 +5,7 @@
     <title>Hello, World! - A-Frame</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
   </head>
 
@@ -25,18 +26,19 @@
 
     <a-scene id = "scene">
       <a-entity bmfont-text="text:By Arthur Dooner, Arun Donti, Robyn Domanico, Stephen Lafortune;width:350;color:#000000;letterSpacing:0"  position="-8.26 1.02 7.43" rotation="0 90 0" scale="10 10 1" id="authorship"></a-entity>       
-      <a-entity vive-controls="hand: left"></a-entity>
-      <a-entity vive-controls="hand: right"></a-entity>
-      <div id ="temp">
-      </div>
+      <a-entity hand-controls="hand: left" id="lhand" scale ="1 1 1"></a-entity>
+      <a-entity hand-controls="hand: right" id="rhand" scale ="1 1 1" vive-cursor></a-entity>
+
       <a-sky color="#C0DFF5" material="color:#bdddf4;shader:flat" scale="-1 1 1" position="0 0 0" geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:20"></a-sky>
-      <a-entity position="0 1.6 0" camera="active:true;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
+
+      <!--<a-entity position="0 1.6 0" camera="active:true;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
         <a-entity cursor="fuse: false"
             position="0 0 -1"
             geometry="primitive: ring"
             material="color: black; shader: flat">
         </a-entity>
-      </a-entity>
+      </a-entity> -->
+
       //  walls
       <a-entity position="-8.57 5.1 0" id="left wall" rotation="1 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
       <a-entity position="7.46 5.1 0" id="right wall" rotation="1 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"visible="true"></a-entity>
@@ -52,8 +54,9 @@
       <a-plane position="-0.2 4.57 -7.99" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel" scale="2 1 1"></a-plane>  
 </body>
   <script>
-    var aframe = require('aframe');
-    var text =require('aframe-bmfont-text-component');
+    //var aframe = require('aframe');
+    //var text =require('aframe-bmfont-text-component');
+
     var aScene = document.querySelector("a-scene");
     var assetList = document.querySelector("a-assets");
 
