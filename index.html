@@ -7,6 +7,7 @@
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://rawgit.com/IdeaSpaceVR/aframe-ui-modal-component/master/dist/aframe-ui-modal-component.min.js"></script>
   </head>
 
 
@@ -31,6 +32,7 @@
 
       <a-sky color="#C0DFF5" material="color:#bdddf4;shader:flat" scale="-1 1 1" position="0 0 0" geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:20"></a-sky>
 
+      <!-- Cursor for testing -->
       <!--<a-entity position="0 1.6 0" camera="active:true;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
         <a-entity cursor="fuse: false"
             position="0 0 -1"
@@ -38,20 +40,22 @@
             material="color: black; shader: flat">
         </a-entity>
       </a-entity> -->
+      <a-entity ui-modal visible="false">
+      </a-entity>
 
       //  walls
-      <a-entity position="-8.57 5.1 0" id="left wall" rotation="1 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
-      <a-entity position="7.46 5.1 0" id="right wall" rotation="1 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"visible="true"></a-entity>
+      <a-entity position="-8.57 5.1 0" id="left wall" rotation="0 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
+      <a-entity position="7.46 5.1 0" id="right wall" rotation="0 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"visible="true"></a-entity>
       <a-entity position="-0.64 5.1 9.42" id="back wall" scale="16 10 1" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
       <a-entity position="-0.69 5.1 -9.52" id="front wall" scale="16 10 1" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6" rotation="0 0 0" visible="true"></a-entity>
       
 
       <a-entity position="0 0 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
-      <a-entity position="-3.24 2.85 -5.19" id="register" obj-model="obj:#register-obj;mtl:#register-mtl" scale="1 1 1" color="#804040" material="" rotation="0 270 0"></a-entity>
+      <a-entity position="-1.31 1.28 -1.50" id="register" obj-model="obj:#register-obj;mtl:#register-mtl" scale="0.5 0.5 0.5" color="#804040" material="" rotation="0 270 0"></a-entity>
       <a-entity position="0 2.8 -5.17" id="table" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.05 0.05 0.05" color="#804040" material=""></a-entity>
-      <a-entity position="0 1.27 -5.17" id="table2" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.02 0.02 0.02" color="#804040" material=""></a-entity>
+      <a-entity position="0 1.27 -1.52" id="table2" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.02 0.02 0.02" color="#804040" material=""></a-entity>
       <a-entity position="6.28 0.1 -0.46" id="shelf1" obj-model="obj:#bookshelf-obj;mtl:#bookshelf-mtl" scale="0.05 0.02 0.02" color="#804040" material="" rotation="0 90 0"></a-entity>
-      <a-plane position="-0.2 4.57 -7.99" rotation="-20 0 0" width="4" height="4" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:4;height:4;depth:0.05" id="panel" scale="2 1 1"></a-plane>  
+      <a-plane position="-0.09 2.24 -2.67" rotation="-20 0 0" width="1.7" height="2" color="#242B93" material="color:#242B93;opacity:0.5" geometry="primitive:box;width:1.7;height:4;depth:0.05" id="panel" scale="2 1 1"></a-plane>
 </body>
   <script>
     //var aframe = require('aframe');
@@ -78,7 +82,7 @@
           var galleryMesh = document.createElement("a-entity");
           galleryMesh.setAttribute("id", "testPlane");
           galleryMesh.setAttribute("obj-model", "obj: #gallery-obj; mtl: #gallery-mtl");
-          galleryMesh.setAttribute("position", "3.03 2.90 -7.39");
+          galleryMesh.setAttribute("position", "0.59 1.26 -1.66");
           galleryMesh.setAttribute("scale", ".005 .005 .005");
           aScene.appendChild(galleryMesh);
           tempPlane2 = true;
