@@ -111,10 +111,10 @@
 
     var leftHand = document.getElementById("lhand");
     var rightHand = document.getElementById("rhand");
-    var menu = document.getElementById("menu");
-    if (rightHand.menudown == true) {
+    document.getElementById("menu").addEventListener("menudown", function () {
       menu.visible = "true";
-    }
+    });
+    
 
   </script>
 
