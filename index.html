@@ -41,7 +41,7 @@
             material="color: black; shader: flat">
         </a-entity>
       </a-entity> -->
-    <a-entity ui-modal id="menu" visible="false">
+    <a-entity ui-modal position="-2.0 1.3 -1.0" id="menu" rotation="0 45 0" visible="false">
       <a-plane width="3" height="1" color="red" position="0 -1.2 0"></a-plane>
       <a-plane width="3" height="1" color="green" position="0 0 0"></a-plane>
       <a-plane width="3" height="1" color="blue" position="0 1.2 0"></a-plane>
@@ -111,8 +111,17 @@
 
     var leftHand = document.getElementById("lhand");
     var rightHand = document.getElementById("rhand");
-    document.getElementById("menu").addEventListener("menudown", function () {
-      menu.visible = "true";
+    var menu = document.getElementById("menu");
+    var menutoggle = 0;
+    rightHand.addEventListener("menudown", function () {
+      if (menutoggle == 0) {
+        menutoggle = 1;
+        menu.setAttribute("visible", "true");
+      }
+      else if (menutoggle == 1) {
+        menutoggle = 0;
+        menu.setAttribute("visible", "false");
+      }
     });
     
 
