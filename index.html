@@ -15,7 +15,7 @@
 
     <a-scene id = "scene">
 
-      <a-assets>
+    <a-assets>
       <img id="woodfloor" src="/assets/textures/woodfloor.jpg">
       //bookshelf stuff
       <a-asset-item id="bookshelf-obj" src="/assets/models/Shelves/RetroRoomDivider.obj"></a-asset-item>
@@ -26,6 +26,9 @@
       //cash register
       <a-asset-item id="register-obj" src="/assets\models\Register\SPA-check.obj"></a-asset-item>
       <a-asset-item id="register-mtl" src="/assets\models\Register\SPA-check.mtl"></a-asset-item>
+      //rotate buttons
+      <img id="rotLeftTex" src="/assets/textures/rotLeft.png">
+      <img id="rotRightTex" src="/assets/textures/rotRight.png">
     </a-assets>
     
       <div></div>
@@ -66,6 +69,10 @@
       <a-plane position="0.34 1.25 -1.45" rotation="-20 0 0" width="1.7" height="2" material="color:#b51802;opacity:0.5" geometry="primitive:box;width:1.7;height:2;depth:0.05" id="brPanel" scale="0.46 0.25 1.005" visible="true"></a-plane>
       <a-plane position="-0.44 1.71 -1.62" rotation="-20 0 0" width="1.7" height="2" material="color:#0335fc;opacity:0.5" geometry="primitive:box;width:1.7;height:2;depth:0.05" id="tlPanel" scale="0.46 0.25 1" visible="true"></a-plane>
       <a-plane position="0.34 1.71 -1.62" rotation="-20 0 0" width="1.7" height="2" material="color:#06f95b;opacity:0.5" geometry="primitive:box;width:1.7;height:2;depth:0.05" id="trPanel" scale="0.46 0.25 1" visible="true"></a-plane>
+
+      // Rotate buttons
+      <a-entity position="-0.47 1.02 -0.63" rotation="0 0 0" scale="0.2 0.2 0.2" id="rotRight" geometry="primitive:box;height:0.2" material="src:#rotRightTex" color="#63c9f2"></a-entity>
+      <a-entity position="-0.69 1.02 -0.63" rotation="0 0 0" scale="0.2 0.2 0.2" id="rotLeft" geometry="primitive:box;height:0.2" material="src:#rotLeftTex" color="#63c9f2"></a-entity>
 </body>
   <script>
     //var aframe = require('aframe');
@@ -84,21 +91,39 @@
     galleryMTL.setAttribute("src", "assets/models/IronMan.mtl");
     assetList.appendChild(galleryMTL);
 
+    // L/R rotate handlers
+    document.querySelector('#rotLeft').addEventListener('click', function () {
+      rotateLeft(currentObject);
+    });
+    document.querySelector('#rotRight').addEventListener('click', function () {
+      rotateRight(currentObject);
+    });
+
     // Left and Right rotation functions
     function rotateLeft(scene_element){
       var rot = scene_element.getAttribute("rotation");
-      var rot_y = rot.y % 360;
-      var new_y = (rot_y - 90) % 360;
+      if(rot != null){
+        var rot_y = rot.y % 360;
+        var new_y = (rot_y - 90) % 360;
 
-      scene_element.setAttribute("rotation", rot.x+" "+new_y+" "+rot.z);
+        scene_element.setAttribute("rotation", rot.x+" "+new_y+" "+rot.z);
+      }
+      else{
+        scene_element.setAttribute("rotation", "0 270 0");
+      }
     }
 
     function rotateRight(scene_element){
       var rot = scene_element.getAttribute("rotation");
-      var rot_y = rot.y % 360;
-      var new_y = (rot_y + 90) % 360;
+      if(rot != null){
+        var rot_y = rot.y % 360;
+        var new_y = (rot_y + 90) % 360;
 
-      scene_element.setAttribute("rotation", rot.x+" "+new_y+" "+rot.z);
+        scene_element.setAttribute("rotation", rot.x+" "+new_y+" "+rot.z);
+      }
+      else{
+        scene_element.setAttribute("rotation", "0 90 0");
+      }
     }
 
     //var COLORS = ['red', 'green', 'blue'];
@@ -113,6 +138,7 @@
           galleryMesh.setAttribute("obj-model", "obj: #gallery-obj; mtl: #gallery-mtl");
           galleryMesh.setAttribute("position", "0.59 1.26 -1.66");
           galleryMesh.setAttribute("scale", ".005 .005 .005");
+          galleryMesh.setAttribute("rotation", "0 0 0");
           aScene.appendChild(galleryMesh);
           tempPlane2 = true;
           currentObject = document.getElementById("testPlane");
@@ -135,6 +161,7 @@
         galleryMesh.setAttribute("position", "0.59 1.26 -.89");
         galleryMesh.setAttribute("geometry","box:sphere;width:1.7;height:2;depth:0.05");
         galleryMesh.setAttribute("scale", "0.25 0.25 .25");
+        galleryMesh.setAttribute("rotation", "0 0 0");
         aScene.appendChild(galleryMesh);
         tempPlane2 = true;
         currentObject = document.getElementById("testPlane1");
@@ -156,6 +183,7 @@
         galleryMesh.setAttribute("position", "0.59 1.26 -.89");
         galleryMesh.setAttribute("geometry","primitive:sphere;width:1.7;height:2;depth:0.05");
         galleryMesh.setAttribute("scale", "0.25 0.25 .25");
+        galleryMesh.setAttribute("rotation", "0 0 0");
         aScene.appendChild(galleryMesh);
         tempPlane2 = true;
         currentObject = document.getElementById("testPlane2");
@@ -177,6 +205,7 @@
       galleryMesh.setAttribute("position", "0.59 1.26 -.89");
       galleryMesh.setAttribute("geometry","primitive:ring;width:1.7;height:2;depth:0.05");
       galleryMesh.setAttribute("scale", "0.25 0.25 .25");
+      galleryMesh.setAttribute("rotation", "0 0 0");
       aScene.appendChild(galleryMesh);
       tempPlane2 = true;
       currentObject = document.getElementById("testPlane3");
