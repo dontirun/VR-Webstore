@@ -93,6 +93,7 @@ console.log('listening on 80')
 function buildCurrentJSONPath(depth, array){
   var subJSON;
   subJSON = categoriesPresent;
+  console.log(depth);
   for (x = 0; x <= depth; x++) { //Iterate down to a maximum depth 
     if (x === 0){ //Depth is the beginning
       subJSON = subJSON['Categories'];
@@ -132,6 +133,14 @@ function handlePost(req, res) {
         currentThreeCategories.push(Object.keys(currentJSON)[x]);
       }
       res.end();
+    }
+    if (post.readSelectedCategory){
+      var categoryStack = post.readSelectedCategory.split(',');
+      console.log(categoryStack.toString());
+      console.log(categoryStack.length);
+      var tempJSON = buildCurrentJSONPath(categoryStack.length, categoryStack)
+      console.log(tempJSON);
+      res.end(Object.keys(tempJSON).toString());
     }
     if(post.search) {
       filteredMovies = moviesFile.filter(hasTheThing(post.search));
