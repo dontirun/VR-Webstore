@@ -3,7 +3,7 @@ var http = require('http')
   , url  = require('url')
   , qs   = require('querystring')
   , path = require('path')
-  , port = 8080
+  , port = 80
 
 // Add more movies! (For a technical challenge, use a file, or even an API!)
 var filteredMovies = [];
@@ -11,7 +11,7 @@ var moviesFile = [];
 
 var server = http.createServer (function (req, res) {
   moviesFile = 
-    fs.readFileSync ('movies.txt', 'utf8')
+    fs.readFileSync ('listOfModels.txt', 'utf8')
       .toString()
       .trim()
       .split("\n"); //Split on new lines
@@ -67,7 +67,8 @@ var server = http.createServer (function (req, res) {
       sendFile(res, 'scripts.js', 'text/javascript')
       break
     default:
-      res.end('404 not found')
+      sendFile(res, uri.pathname);
+      break;
   }
 
 })
@@ -143,13 +144,6 @@ function sendIndex(res, isFiltered) {
   html = html + '<button type="submit">Add Movie</button>';
   html = html + '</form>';
   html = html + '<ul>'
-  // Note: the next line is fairly complex. 
-  // You don't need to understand it to complete the assignment,
-  // but the `map` function and `join` functions are VERY useful for working
-  // with arrays, so I encourage you to tinker with the line below
-  // and read up on the functions it uses.
-  //
-  // For a challenge, try rewriting this function to take the filtered movies list as a parameter, to avoid changing to a page that lists only movies.
   if (isFiltered === 1) {
     html = html + filteredMovies.map(function(d) { return '<li>'+d+'</li>' }).join(' ')
   }
