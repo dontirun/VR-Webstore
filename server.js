@@ -20,8 +20,8 @@ var server = http.createServer (function (req, res) {
       .trim()
   categoriesPresent = JSON.parse(moviesFile);
   //console.log(categoriesPresent);
-  currentJSON = buildCurrentJSONPath(0, []);
-  currentThreeCategories = [Object.keys(currentJSON)[0], Object.keys(currentJSON)[1], Object.keys(currentJSON)[2]];
+  currentJSON = currentJSON || buildCurrentJSONPath(0, []);
+  currentThreeCategories = currentThreeCategories || [Object.keys(currentJSON)[0], Object.keys(currentJSON)[1], Object.keys(currentJSON)[2]];
   //var newData = '';
   // req.on('data', function(c) {
   //   newData = newData + c;
@@ -60,7 +60,10 @@ var server = http.createServer (function (req, res) {
     case '/index.html':
       sendFile(res, 'index.html');
       break;
-    case '/threeCategories':
+    case '/initLoad':
+      res.end(Object.keys(currentJSON).toString());
+      break;
+    case '/getCategories':
       res.end(currentThreeCategories.toString());
       break;
     case '/filteredMovies':
