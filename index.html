@@ -32,7 +32,8 @@
     </a-assets>
     
       <div></div>
-      <a-entity bmfont-text="text:By: Arthur Dooner, Arun Donti, Robyn Domanico, Stephen Lafortune;width:360;color:#000000;letterSpacing:0" position="-4.35 1.68 5.52" rotation="0 90 0" scale="7 7 1" id="authorship"></a-entity>      
+      <a-entity bmfont-text="text:By: Arthur Dooner, Arun Donti, Robyn Domanico, Stephen Lafortune;width:360;color:#000000;letterSpacing:0" position="-4.35 1.68 5.52" rotation="0 90 0" scale="7 7 1" id="authorship"></a-entity>
+      <a-entity bmfont-text="text:0:00;width:360;color:#ff0000;letterSpacing:0" position="-1.99 1.68 -6.15" rotation="0 0 0" scale="7 7 1" id="time"></a-entity>            
       <a-entity hand-controls="left" id="lhand" scale ="1 1 1"></a-entity>
       <a-entity hand-controls="right" id="rhand" scale ="1 1 1" vive-cursor></a-entity>
 
@@ -65,6 +66,8 @@
         </a-plane>
       </a-entity>
 
+      //clock
+      <a-entity position="0 7.53 -5.71" scale="1 1 0.4" color="#000000" material="color:#000000" geometry="depth:1"></a-entity>
       //  walls
       <a-entity position="-4.62 5.1 0" id="left wall" rotation="0 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
       <a-entity position="4.61 5.1 0" id="right wall" rotation="0 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6" visible="true"></a-entity>
@@ -87,6 +90,7 @@
       <a-entity position="-0.69 0.88 -0.46" rotation="90 0 0" scale="0.2 0.2 0.2" id="rotLeft" geometry="primitive:box;height:0.2" material="src:#rotLeftTex" color="#63c9f2"></a-entity>
 </body>
   <script>
+  startTime();
     //var aframe = require('aframe');
     //var text =require('aframe-bmfont-text-component');
 
@@ -261,5 +265,24 @@
       currentObject = document.getElementById("testPlane3");
   }
 });
+
+
+// clock functions
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    var timeVal = h + ":" + m + ":" + s;
+    var stringTime = timeVal.toString();
+    document.querySelector('#time').setAttribute("bmfont-text","text:"+stringTime+"; color:#ff0000; align:'left'");
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
   </script>
 </html>
