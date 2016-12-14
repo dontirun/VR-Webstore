@@ -8,6 +8,7 @@
     <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="https://rawgit.com/IdeaSpaceVR/aframe-ui-modal-component/master/dist/aframe-ui-modal-component.min.js"></script>
+    <script type = "text/javascript" src="buttonEventControllers.js"></script>
   </head>
 
 
@@ -60,13 +61,13 @@
       <a-entity position="1.61 1.09 -0.01" id="menu" rotation="0 -45 0" visible="true" scale="0.5 0.5 1">
         <a-entity bmfont-text="text: Item1; align: center;" position="-3 0 0"></a-entity>
         <a-plane width="3" height="0.5" color="gray" id="item1" position="0 1 0" material="" geometry="">
-          <a-entity bmfont-text="text: Item1; align: left;" position="-1.5 0 0"></a-entity>
+          <a-entity id="item1Text" bmfont-text="text: Item1; align: left;" position="-1.5 0 0"></a-entity>
         </a-plane>
         <a-plane width="3" height="0.5" color="gray" id="item2" position="0 0.4 0" material="" geometry="">
-          <a-entity bmfont-text="text: Item2; align: left;" position="-1.5 0 0"></a-entity>
+          <a-entity id="item2Text" bmfont-text="text: Item2; align: left;" position="-1.5 0 0"></a-entity>
         </a-plane>
         <a-plane width="3" height="0.5" color="gray" id="item3" position="0 -0.2 0" material="" geometry="">
-          <a-entity bmfont-text="text: Item3; align: left;" position="-1.5 0 0"></a-entity>
+          <a-entity id="item3Text" bmfont-text="text: Item3; align: left;" position="-1.5 0 0"></a-entity>
         </a-plane>
 
         <!-- Arrows -->
@@ -99,6 +100,8 @@
       <a-entity position="-0.69 0.88 -0.46" rotation="90 0 0" scale="0.2 0.2 0.2" id="rotLeft" geometry="primitive:box;height:0.2" material="src:#rotLeftTex" color="#63c9f2"></a-entity>
 </body>
   <script>
+  var MyControllers = MyControllers || {};
+  MyControllers.setup();
   startTime();
     //var aframe = require('aframe');
     //var text =require('aframe-bmfont-text-component');
@@ -123,6 +126,7 @@
     document.querySelector('#rotRight').addEventListener('click', function () {
       rotateRight(currentObject);
     });
+
 
     // Left and Right rotation functions
     function rotateLeft(scene_element){

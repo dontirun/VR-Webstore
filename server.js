@@ -9,13 +9,19 @@ var http = require('http')
 var filteredMovies = [];
 var moviesFile = [];
 var categoriesPresent;
+var storedPath = [];
+var currentPointInList = 0;
+var currentJSON;
+var currentThreeCategories = [];
 var server = http.createServer (function (req, res) {
   moviesFile = 
     fs.readFileSync ('categories.json', 'utf8')
       .toString()
       .trim()
   categoriesPresent = JSON.parse(moviesFile);
-  console.log(categoriesPresent);
+  //console.log(categoriesPresent);
+  currentJSON = buildCurrentJSONPath(0, []);
+  currentThreeCategories = [Object.keys(currentJSON)[0], Object.keys(currentJSON)[1], Object.keys(currentJSON)[2]];
   //var newData = '';
   // req.on('data', function(c) {
   //   newData = newData + c;
@@ -54,8 +60,8 @@ var server = http.createServer (function (req, res) {
     case '/index.html':
       sendFile(res, 'index.html');
       break;
-    case '/movies':
-      res.end(moviesFile.toString());
+    case '/threeCategories':
+      res.end(currentThreeCategories.toString());
       break;
     case '/filteredMovies':
       res.end(filteredMovies.toString());
@@ -65,7 +71,10 @@ var server = http.createServer (function (req, res) {
       break
     case '/js/scripts.js':
       sendFile(res, 'scripts.js', 'text/javascript')
-      break
+      break;
+    case '/buttonEventControllers.js':
+      sendFile(res, 'buttonEventControllers.js', 'text/javascript')
+      break;
     default:
       sendFile(res, uri.pathname.substring(1), 'image/png');
       break;
@@ -76,7 +85,21 @@ var server = http.createServer (function (req, res) {
 server.listen(process.env.PORT || port)
 console.log('listening on 80')
 
+
 // subroutines
+function buildCurrentJSONPath(depth, array){
+  var subJSON;
+  subJSON = categoriesPresent;
+  for (x = 0; x <= depth; x++) { //Iterate down to a maximum depth 
+    if (x === 0){ //Depth is the beginning
+      subJSON = subJSON['Categories'];
+    }
+    else {
+      subJSON = subJSON[array[x - 1]];
+    }
+  }
+  return subJSON;
+}
 function handlePost(req, res) {
   var body = ''
 
@@ -84,12 +107,27 @@ function handlePost(req, res) {
     body += d;
   })
   req.on('end', function(d) {
-    var post = qs.parse( body )
+    var post = qs.parse( body );
+    //We need to consider the path to where we need to be
 
-    if( post.newMovie ) {
-      moviesFile.push( post.newMovie )
-      moviesFile.sort();
-      fs.writeFileSync('movies.txt', moviesFile.join('\n'));
+    //If we're reading the categories in
+    if (post.readCategories) {
+      if (post.readCategories === "left") { //If we want to go left in a list
+        if (currentPointInList > 2 ) { //If we're higher than just two in the list
+          currentPointInList -= 3;
+        }
+
+      }
+      else if (post.readCategories === "right") { //If we want to go right in a list
+        if (currentPointInList < (Object.keys(currentJSON).length - 2)) { //Get the length of the json object we're at, and consider we want up to 2 shorter than that
+          currentPointInList += 3;
+        }
+      }
+      currentThreeCategories = [];
+      maxDistanceAlong = (Object.keys(currentJSON).length < currentPointInList + 3) ? Object.keys(currentJSON).length : (currentPointInList + 3); 
+      for (x = currentPointInList; x < maxDistanceAlong; x++) {
+        currentThreeCategories.push(Object.keys(currentJSON)[x]);
+      }
       res.end();
     }
     if(post.search) {

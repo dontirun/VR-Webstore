@@ -1,31 +1,31 @@
 {
-    "Categories" : [
-        {"Computer Systems" : [
-            {"Desktops": [
-                {"Desktop Computers": ["H440", "S340", "InWin 805", "InWin 805i", "Azza Genesis 9000", "Corsair Air 240"]},
-                {"Gaming Desktops": []},
-                {"All-in-One Computers": []},
-                {"Server & Workstations": []},
-                {"Chromebox Desktops & Mini PCs": []},
-                {"Business Desktops": []}
-            ]},
-            {"Laptops / Notebooks": []},
-            {"Gaming Laptops": []},
-            {"Tablets": []},
-            {"Peripherals": []},
-            {"Accessories": []},
-            {"Refurbished": []}
-        ] },
-        {"Components": [] },
-        {"Electronics": [] },
-        {"Gaming": [] },
-        {"Networking": [] },
-        {"Office Solutions": []},
-        {"Software & Services": []},
-        {"Automotive & Industrial" : []},
-        {"Home & Tools": []},
-        {"Health & Sports": []},
-        {"Apparel & Accessories": []},
-        {"Hobbies & Toys": []}
-    ]
+    "Categories" : {
+        "Computer Systems" : {
+            "Desktops": {
+                "Desktop Computers": ["H440", "S340", "InWin 805", "InWin 805i", "Azza Genesis 9000", "Corsair Air 240"],
+                "Gaming Desktops": [],
+                "All-in-One Computers": [],
+                "Server & Workstations": [],
+                "Chromebox Desktops & Mini PCs": [],
+                "Business Desktops": []
+            },
+            "Laptops / Notebooks": [],
+            "Gaming Laptops": [],
+            "Tablets": [],
+            "Peripherals": [],
+            "Accessories": [],
+            "Refurbished": []
+        },
+        "Components": [],
+        "Electronics": [],
+        "Gaming": [],
+        "Networking": [],
+        "Office Solutions": [],
+        "Software & Services": [],
+        "Automotive & Industrial" : [],
+        "Home & Tools": [],
+        "Health & Sports": [],
+        "Apparel & Accessories": [],
+        "Hobbies & Toys": []
+   }
 }
