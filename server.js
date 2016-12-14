@@ -14,8 +14,7 @@ var server = http.createServer (function (req, res) {
     fs.readFileSync ('categories.json', 'utf8')
       .toString()
       .trim()
-      .split("\n"); //Split on new lines
-  categoriesPresent = JSON.parse('categories.json');
+  categoriesPresent = JSON.parse(moviesFile);
   console.log(categoriesPresent);
   //var newData = '';
   // req.on('data', function(c) {
