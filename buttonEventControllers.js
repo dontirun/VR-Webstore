@@ -56,11 +56,11 @@ MyControllers.setup = function() {
     oReq.open("GET", "/initLoad");
     oReq.send();
 
-    document.querySelector('#forwardArrow').addEventListener('click', function() {
+    document.querySelector('#forwardArrowHelper').addEventListener('click', function() {
         console.log("Made it here!");
         MyControllers.promptInADirection(3, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
     });
-    document.querySelector('#backArrow').addEventListener('click', function() {
+    document.querySelector('#backArrowHelper').addEventListener('click', function() {
         console.log("Made it here!");
         MyControllers.promptInADirection(-3, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
     });
@@ -73,10 +73,10 @@ MyControllers.setup = function() {
     document.querySelector('#item3').addEventListener('click', function() {
         MyControllers.getAResult(3);
     });
-    document.querySelector('#forwardArrow').addEventListener('thumbup', function() {
+    document.querySelector('#forwardArrowHelper').addEventListener('thumbup', function() {
         MyControllers.promptInADirection(3, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
     });
-    document.querySelector('#backArrow').addEventListener('thumbup', function() {
+    document.querySelector('#backArrowHelper').addEventListener('thumbup', function() {
         MyControllers.promptInADirection(-3, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
     });
 }

@@ -19,6 +19,7 @@
       <a-assets>
       <img id="woodfloor" src="/assets/textures/woodfloor.jpg">
       <img id="heman" src="/assets/textures/heman.jpg">
+      <img id="hul" src="/assets/models/Bookshelfstuff/0000.png">
       //bookshelf stuff
       <a-asset-item id="bookshelf-obj" src="/assets/models/Shelves/RetroRoomDivider.obj"></a-asset-item>
       <a-asset-item id="bookshelf-mtl" src="/assets/models/Shelves/RetroRoomDivider.mtl"></a-asset-item>
@@ -66,7 +67,7 @@
 
       <!-- Cursor for testing -->
 
-  <!--   <a-entity position="0 .8 0" camera="active:true;userHeight:.8;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
+     <!--<a-entity position="0 .8 0" camera="active:true;userHeight:.8;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
         <a-entity cursor="fuse: false"
             position="0 0 -1"
             geometry="primitive: ring"
@@ -74,10 +75,10 @@
         </a-entity>
       </a-entity>
       <a-entity ui-modal visible="false">
-      </a-entity>
+      </a-entity>-->
 
-      // temp child for removeChild
-      <a-plane  id="hidden" visible="false"></a-plane>
+      <!--temp child for removeChild-->
+      <a-plane  id="hidden" visible="false"></a-plane> 
 
       <!-- Menu entities -->
       <a-entity position="1.61 1.09 -0.01" id="menu" rotation="0 -38 0" visible="true" scale="0.5 0.5 1">
@@ -95,9 +96,15 @@
         </a-plane>
 
         <!-- Arrows -->
-        <a-entity position="1 -1 0" rotation="-8 0 0" id="forwardArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
-        <a-entity position="-1 -1 0" rotation="8 180 0" id="backArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
-        <a-entity position="-2 1 0" rotation="0 0 90" id="upArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
+        <a-entity position="1 -1 0" rotation="-8 0 0" id="forwardArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material="">
+          <a-plane position="-0.07 0.02 0.01" rotation="270 0 0" scale="4 1.2 3.05" geometry="primitive:box" id="forwardArrowHelper" material="opacity:0"></a-plane>
+        </a-entity>
+        <a-entity position="-1 -1 0" rotation="8 180 0" id="backArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material="">
+          <a-plane position="-0.07 0.02 0.01" rotation="270 0 0" scale="4 1.2 3.05" geometry="primitive:box" id="backArrowHelper" material="opacity:0"></a-plane>
+        </a-entity>
+        <a-entity position="-2 1 0" rotation="0 0 90" id="upArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material="">
+          <a-plane position="-0.07 0.02 0.01" rotation="270 0 0" scale="4 1.2 3.05" geometry="primitive:box" id="upArrowHelper" material="opacity:0"></a-plane>
+        </a-entity>
       </a-entity>
 
       <!--clock-->
