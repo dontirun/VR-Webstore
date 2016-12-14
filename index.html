@@ -26,6 +26,9 @@
       //cash register
       <a-asset-item id="register-obj" src="/assets/models/Register/SPA-check.obj"></a-asset-item>
       <a-asset-item id="register-mtl" src="/assets/models/Register/SPA-check.mtl"></a-asset-item>
+      //arrow
+      <a-asset-item id="arrow-obj" src="/assets/models/Arrow.obj"></a-asset-item>
+      <a-asset-item id="arrow-mtl" src="/assets/models/Arrow.mtl"></a-asset-item>
       //rotate buttons
       <img id="rotLeftTex" src="/assets/textures/rotLeft.png">
       <img id="rotRightTex" src="/assets/textures/rotRight.png">
@@ -55,6 +58,7 @@
 
       <!-- Menu entities -->
       <a-entity position="1.61 1.09 -0.01" id="menu" rotation="0 -45 0" visible="true" scale="0.5 0.5 1">
+        <a-entity bmfont-text="text: Item1; align: center;" position="-3 0 0"></a-entity>
         <a-plane width="3" height="0.5" color="gray" id="item1" position="0 1 0" material="" geometry="">
           <a-entity bmfont-text="text: Item1; align: left;" position="-1.5 0 0"></a-entity>
         </a-plane>
@@ -64,6 +68,11 @@
         <a-plane width="3" height="0.5" color="gray" id="item3" position="0 -0.2 0" material="" geometry="">
           <a-entity bmfont-text="text: Item3; align: left;" position="-1.5 0 0"></a-entity>
         </a-plane>
+
+        <!-- Arrows -->
+        <a-entity position="1 -1 0" id="forwardArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
+        <a-entity position="-1 -1 0" rotation="0 180 0" id="backArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
+        <a-entity position="-2 1 0" rotation="0 0 90" id="upArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
       </a-entity>
 
       //clock
