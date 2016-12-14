@@ -21,6 +21,17 @@
       //bookshelf stuff
       <a-asset-item id="bookshelf-obj" src="/assets/models/Shelves/RetroRoomDivider.obj"></a-asset-item>
       <a-asset-item id="bookshelf-mtl" src="/assets/models/Shelves/RetroRoomDivider.mtl"></a-asset-item>
+      <a-asset-item id="cow-obj" src="/assets/models/Bookshelfstuff/cow.obj"></a-asset-item>
+      <a-asset-item id="cow-mtl" src="/assets/models/Bookshelfstuff/cow.mtl"></a-asset-item>
+      <a-asset-item id="footbones-obj" src="/assets/models/Bookshelfstuff/footbones.obj"></a-asset-item>
+      <a-asset-item id="shuttle-obj" src="/assets/models/Bookshelfstuff/shuttle.obj"></a-asset-item>
+      <a-asset-item id="shuttle-mtl" src="/assets/models/Bookshelfstuff/shuttle.mtl"></a-asset-item>
+      <a-asset-item id="trophy-obj" src="/assets/models/Bookshelfstuff/trophycup.obj"></a-asset-item>
+      <a-asset-item id="trophy-mtl" src="/assets/models/Bookshelfstuff/trophycup.mtl"></a-asset-item>
+      <a-asset-item id="beethoven-obj" src="/assets/models/Bookshelfstuff/beethoven.obj"></a-asset-item>
+      <a-asset-item id="beethoven-mtl" src="/assets/models/Bookshelfstuff/beethoven.mtl"></a-asset-item>
+      <a-asset-item id="hulk-obj" src="/assets/models/Bookshelfstuff/Hulk.obj"></a-asset-item>
+      <a-asset-item id="hulk-mtl" src="/assets/models/Bookshelfstuff/Hulk.mtl"></a-asset-item>
       //table stuff
       <a-asset-item id="table-obj" src="/assets/models/mesa.obj"></a-asset-item>
       <a-asset-item id="table-mtl" src="/assets/models/mesa.mtl"></a-asset-item>
@@ -91,7 +102,17 @@
       <a-entity position="0 -0.1 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
       <a-entity position="-0.66 1.02 -0.94" id="register" obj-model="obj:#register-obj;mtl:#register-mtl" scale="0.25 0.25 0.25" color="#804040" material="" rotation="0 270 0"></a-entity>
       <a-entity position="0 1 -0.9" id="table1" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.01 0.02 0.01" color="#804040" material=""></a-entity>
-      <a-entity position="3.92 0.1 -0.46" id="bookshelf1" obj-model="obj:#bookshelf-obj;mtl:#bookshelf-mtl" scale="0.05 0.02 0.02" color="#804040" material="" rotation="0 90 0"></a-entity>
+
+      // bookshelf and sub objects
+      <a-entity position="3.92 0.1 -0.46" id="bookshelf1" obj-model="obj:#bookshelf-obj;mtl:#bookshelf-mtl" scale="0.05 0.02 0.02" color="#804040" material="" rotation="0 90 0">
+        <a-entity position="0 86.71 0" id="bCow" obj-model="obj:#cow-obj;mtl:#cow-mtl" scale="0.25 0.5 1" color="#804040" material="" rotation="0 0 0"></a-entity>
+        <a-entity position="52.34 144.93 21.59" id="bFootBones" obj-model="obj:#footbones-obj" scale="0.25 0.5 1" color="#804040" material="" rotation="0 180 0"></a-entity>
+        <a-entity position="-24.97 190.92 -2.92" id="bShuttle" obj-model="obj:#shuttle-obj;mtl:#shuttle-mtl" scale="0.5 0.5 0.5" material="" rotation="0 180 90"></a-entity>
+        <a-entity position="10.4 134.03 -2.18" id="bTrophy" obj-model="obj:#trophy-obj;mtl:#trophy-mtl" scale="0.2 0.4 0.4" material="" rotation="270 0 0"></a-entity>
+        <a-entity position="-46.74 110.17 9.64" id="bBeethoven" obj-model="obj:#beethoven-obj;mtl:#beethoven-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0"></a-entity>
+        <a-entity position="52.89 87.98 9.64" id="bHulk" obj-model="obj:#hulk-obj;mtl:#hulk-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0"></a-entity>
+      </a-entity>
+     // picture frame
       <a-entity position="1.58 3.42 -5.26" id="frame" obj-model="obj:#pic-obj;mtl:#pic-mtl" scale="0.015 0.015 0.015" color="#804040" material="" rotation="0 0 0">
         <a-entity position="-0.4 0 0" rotation="0 0 0" id="pic1" scale="78 60 1" material="src:#heman" geometry="primitive:box"></a-entity>
       </a-entity>
