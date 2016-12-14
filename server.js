@@ -34,7 +34,7 @@ var server = http.createServer (function (req, res) {
   //   newData = '';
   // });
   var uri = url.parse(req.url)
-
+  console.log(uri.pathname);
   switch( uri.pathname ) {
     // Note the new case handling search
     case '/search':
@@ -67,14 +67,14 @@ var server = http.createServer (function (req, res) {
       sendFile(res, 'scripts.js', 'text/javascript')
       break
     default:
-      sendFile(res, uri.pathname);
+      sendFile(res, uri.pathname.substring(1), 'image/png');
       break;
   }
 
 })
 
 server.listen(process.env.PORT || port)
-console.log('listening on 8080')
+console.log('listening on 80')
 
 // subroutines
 function handlePost(req, res) {
