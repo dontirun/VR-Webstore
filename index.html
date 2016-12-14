@@ -39,19 +39,19 @@
       //cash register
       <a-asset-item id="register-obj" src="/assets/models/Register/SPA-check.obj"></a-asset-item>
       <a-asset-item id="register-mtl" src="/assets/models/Register/SPA-check.mtl"></a-asset-item>
-<<<<<<< HEAD
+
       //arrow
       <a-asset-item id="arrow-obj" src="/assets/models/Arrow.obj"></a-asset-item>
       <a-asset-item id="arrow-mtl" src="/assets/models/Arrow.mtl"></a-asset-item>
-=======
+
        //lighting
-      <a-asset-item id="lighting-obj" src="/assets/models/Lights/classic and modern_obj.obj"></a-asset-item>
-      <a-asset-item id="lighting-mtl" src="/assets/models/Lights/classic and modern_obj.mtl"></a-asset-item>
+      <a-asset-item id="lighting-obj" src="/assets/models/Lights/classicandmodern_obj.obj"></a-asset-item>
+      <a-asset-item id="lighting-mtl" src="/assets/models/Lights/classicandmodern_obj.mtl"></a-asset-item>
       //picture
-      <a-asset-item id="pic-obj" src="/assets/models/picture frame.obj"></a-asset-item>
-      <a-asset-item id="pic-mtl" src="/assets/models/picture frame.mtl"></a-asset-item>
+      <a-asset-item id="pic-obj" src="/assets/models/pictureframe.obj"></a-asset-item>
+      <a-asset-item id="pic-mtl" src="/assets/models/pictureframe.mtl"></a-asset-item>
       
->>>>>>> 54de29956fe8cae662f581aa6788c524316e575c
+
       //rotate buttons
       <img id="rotLeftTex" src="/assets/textures/rotLeft.png">
       <img id="rotRightTex" src="/assets/textures/rotRight.png">
@@ -65,11 +65,8 @@
       <a-sky color="#C0DFF5" material="color:#bdddf4;shader:flat" scale="-1 1 1" position="0 0 0" geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:20"></a-sky>
 
       <!-- Cursor for testing -->
-<<<<<<< HEAD
-   <a-entity position="0 .8 0" camera="active:true;userHeight:.8;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
-=======
- <!--  <a-entity position="0 1.6 0" camera="active:true;userHeight:1.6;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
->>>>>>> 54de29956fe8cae662f581aa6788c524316e575c
+
+  <!--   <a-entity position="0 .8 0" camera="active:true;userHeight:.8;near:0.01" wasd-controls="" rotation="-11.23 -3.21 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" id="camera">
         <a-entity cursor="fuse: false"
             position="0 0 -1"
             geometry="primitive: ring"
@@ -103,26 +100,26 @@
         <a-entity position="-2 1 0" rotation="0 0 90" id="upArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material=""></a-entity>
       </a-entity>
 
-      //clock
+      <!--clock-->
       <a-entity position="-1.87 3.5 -5.71" scale="2 1 0.2" color="#c0c0c0" material="color:#c0c0c0" geometry="depth:1" id="clock">
         <a-entity position="0 0 0.54" scale="0.9 0.8 1" color="#000000" material="color:#000000" geometry="primitive:plane" id="clockface"></a-entity>
         <a-entity bmfont-text="text:23:13;color:#ff0000;align:'left'" position="-0.36 -0.17 0.55" rotation="0 0 0" scale="1.5 3 1" id="time"></a-entity> 
       </a-entity>
-      //  walls
+      <!--walls-->
       <a-entity position="-4.62 5.1 0" id="left wall" rotation="0 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
       <a-entity position="4.61 5.1 0" id="right wall" rotation="0 0 0" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6" visible="true"></a-entity>
       <a-entity position="-0.64 5.1 6.25" id="back wall" scale="16 10 1" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6"></a-entity>
       <a-entity position="-0.69 5.1 -6.68" id="front wall" scale="16 10 1" color="#ADD8E6" geometry="primitive:box" material="color:#ADD8E6" rotation="0 0 0" visible="true"></a-entity>
       <a-entity position="-0.56 7.63 0" id="celing" rotation="0 0 90" scale="0.5 10 20" color="#ADD8E6" geometry="primitive:box" material="color:#96c5fe" visible="true"></a-entity>
-      //other things
+      <!--other things-->
       <a-entity position="-0.56 7.63 0" id="lighthelper" rotation="0 0 0" scale="0.01 0.01 0.01">
-       <a-entity position="211.39 -370.59 36.48" id="lighting1" obj-model="obj:#lighting-obj;mtl:#lighting-mtl" scale="0.1 0.1 0.1" color="#804040" material="" rotation="0 0 0"></a-entity>
+       <a-entity position="211.39 -370.59 36.48" id="lighting1" obj-model="obj:#lighting-obj;mtl:#lighting-mtl" scale="0.1 0.1 0.1"  material="" rotation="0 0 0"></a-entity>
       </a-entity>
       <a-entity position="0 -0.1 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
       <a-entity position="-0.66 1.02 -0.94" id="register" obj-model="obj:#register-obj;mtl:#register-mtl" scale="0.25 0.25 0.25" color="#804040" material="" rotation="0 270 0"></a-entity>
       <a-entity position="0 1 -0.9" id="table1" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.01 0.02 0.01" color="#804040" material=""></a-entity>
 
-      // bookshelf and sub objects
+      <!--bookshelf and sub objects-->
       <a-entity position="3.92 0.1 -0.46" id="bookshelf1" obj-model="obj:#bookshelf-obj;mtl:#bookshelf-mtl" scale="0.05 0.02 0.02" color="#804040" material="" rotation="0 90 0">
         <a-entity position="0 86.71 0" id="bCow" obj-model="obj:#cow-obj;mtl:#cow-mtl" scale="0.25 0.5 1" color="#804040" material="" rotation="0 0 0"></a-entity>
         <a-entity position="52.34 144.93 21.59" id="bFootBones" obj-model="obj:#footbones-obj" scale="0.25 0.5 1" color="#804040" material="" rotation="0 180 0"></a-entity>
@@ -131,13 +128,13 @@
         <a-entity position="-46.74 110.17 9.64" id="bBeethoven" obj-model="obj:#beethoven-obj;mtl:#beethoven-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0"></a-entity>
         <a-entity position="52.89 87.98 9.64" id="bHulk" obj-model="obj:#hulk-obj;mtl:#hulk-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0"></a-entity>
       </a-entity>
-     // picture frame
+     <!--picture frame-->
       <a-entity position="1.58 3.42 -5.26" id="frame" obj-model="obj:#pic-obj;mtl:#pic-mtl" scale="0.015 0.015 0.015" color="#804040" material="" rotation="0 0 0">
         <a-entity position="-0.4 0 0" rotation="0 0 0" id="pic1" scale="78 60 1" material="src:#heman" geometry="primitive:box"></a-entity>
       </a-entity>
   
 
-      // table panels
+     <!--table panels-->
       <a-plane position="-0.44 1.25 -1.45" rotation="-20 0 0" width="1.7" height="2"  material="color:#de21bd;opacity:0.5" geometry="primitive:box;width:1.7;height:2;depth:0.00" id="blPanel" scale="0.46 0.25 1.005" visible="true">
         <a-plane position="-0.4 0 0" rotation="0 0 0" id="blPanelSub" scale="1 1 1"  material="color:#de21bd;opacity:0.0" geometry="primitive:plane"></a-plane>
       </a-plane>
@@ -151,7 +148,7 @@
         <a-plane position="-0.4 0 0" rotation="0 0 0" id="trPanelSub" scale="1 1 1"  material="color:#de21bd;opacity:0.0" geometry="primitive:plane"></a-plane>
       </a-plane>
 
-      // Rotate buttons
+      <!--Rotate buttons-->
       <a-entity position="-0.49 0.88 -0.46" rotation="90 0 0" scale="0.2 0.2 0.2" id="rotRight" geometry="primitive:box;height:0.2" material="color:#63c9f2" color="#63c9f2">
         <a-plane position="0 0.11 0" rotation="270 0 0" scale="1 1 1"  material="src:#rotRightTex" geometry="primitive:plane"></a-plane>
       </a-entity>
