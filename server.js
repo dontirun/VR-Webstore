@@ -8,14 +8,15 @@ var http = require('http')
 // Add more movies! (For a technical challenge, use a file, or even an API!)
 var filteredMovies = [];
 var moviesFile = [];
-
+var categoriesPresent;
 var server = http.createServer (function (req, res) {
   moviesFile = 
-    fs.readFileSync ('listOfModels.txt', 'utf8')
+    fs.readFileSync ('categories.json', 'utf8')
       .toString()
       .trim()
       .split("\n"); //Split on new lines
-  
+  categoriesPresent = JSON.parse('categories.json');
+  console.log(categoriesPresent);
   //var newData = '';
   // req.on('data', function(c) {
   //   newData = newData + c;
@@ -42,10 +43,10 @@ var server = http.createServer (function (req, res) {
       handlePost(req, res);
       break;
     // Note we no longer have   an index.html file, but we handle the cases since that's what the browser will request
-    case '/putNewMovie':
+    case '/readCategories':
       handlePost(req, res);
       break;
-    case '/reMovie':
+    case '/readSelectedCategory':
       handlePost(req, res);
       break;
     case '/':
