@@ -253,15 +253,22 @@
       rotateRight(currentObject);
     });
 
-    function createObject(objvalue){
+    function createObject(objvalues){
       var object = document.createElement("a-entity");
       object.setAttribute("id", objvalues.id);
-      object.setAttribute("obj-model", objvalues.obj-model);
+      if(objvalues.objmodel !== ""){
+        object.setAttribute("obj-model", objvalues.objmodel);
+       // object.setAttribute("obj-model",  "obj: #crash-obj; mtl: #crash-mtl");
+      }
       object.setAttribute("position", objvalues.position);
       object.setAttribute("scale", objvalues.scale);
-      object.setAttribute("material", objvalues.material);
+      if(objvalues.material !== ""){
+        object.setAttribute("material", objvalues.material);
+      }
       object.setAttribute("position", objvalues.position);
-      object.setAttribute("geometry", objvalues.geometry);
+      if(objvalues.geometry !== ""){
+        object.setAttribute("geometry", objvalues.geometry);
+      }
       aScene.appendChild(object);
       currentObject = document.getElementById(objvalues.id);
     }
@@ -368,17 +375,18 @@
       activePanel = '';
     }
     else{
+      aScene.removeChild(currentObject);
+      document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
+        aScene.removeChild(currentObject);
         var objValues = JSON.parse(this.responseText);
         createObject(objValues);
-        activePanel = 'tlPanel';
+        activePanel = 'blPanel';
       }
       oReq.addEventListener("load", tempReqListener);
       oReq.open("POST", "/getobject", true);
       oReq.send('getobject=' + MyControllers.storedPanels[0]);
-
-      activePanel = 'blPanel';
     }
   });
 
@@ -395,6 +403,8 @@
       activePanel = '';
     }
     else{
+      aScene.removeChild(currentObject);
+      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);
@@ -420,9 +430,12 @@
       activePanel = '';
     }
     else{
+      aScene.removeChild(currentObject);
+      document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);
+        console.log(objValues);
         createObject(objValues);
         activePanel = 'trPanel';
       }
@@ -445,6 +458,8 @@
       activePanel = '';
     }
     else{
+      aScene.removeChild(currentObject);
+      document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);

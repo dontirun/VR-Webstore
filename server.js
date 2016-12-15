@@ -29,6 +29,9 @@ var server = http.createServer (function (req, res) {
     case '/readSelectedCategory':
       handlePost(req, res);
       break;
+    case '/getobject':
+      handleJSONRequest(req, res);
+      break;
     case '/':
       sendFile(res, 'index.html');
       break;
@@ -62,6 +65,25 @@ console.log('listening on 80')
 
 
 // subroutines
+function handleJSONRequest(req, res) {
+  var body = '';
+
+  req.on('data', function(d) {
+    body += d;
+  });
+  req.on('end', function(d) {
+    var post = qs.parse( body );
+    if (post.getobject) {
+      console.log(post.getobject);
+      var resultObject = categoriesPresent["Items"].filter(function(obj){
+        return obj["name"] === post.getobject;
+      });
+      console.log(resultObject[0]);
+      res.end(JSON.stringify(resultObject[0]));
+    }
+  });
+}
+
 function buildCurrentJSONPath(depth, array){
   var subJSON;
   subJSON = categoriesPresent;
