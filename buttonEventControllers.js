@@ -4,7 +4,7 @@
 var MyControllers = MyControllers || {};
 
 MyControllers.atPanels = false;
-MyControllers.storedPanels = [];
+MyControllers.storedPanels = ['', '', '', ''];
 MyControllers.storedCategories = [];
 MyControllers.currentIndex = 0;
 MyControllers.currentCategories = [];
@@ -47,8 +47,11 @@ MyControllers.getAResult = function(choiceNum){
         if(MyControllers.atPanels){
             var tmpList = this.responseText.split(',');
             tmpList.splice(0,1); // Remove PANEL identifier
+            console.log(tmpList);
+            MyControllers.storedPanels = tmpList;
 
             // Call panel update function
+            refreshPanels();
 
             // Get object information from the server for the given panels
         }
@@ -66,7 +69,11 @@ MyControllers.getAResult = function(choiceNum){
 
 MyControllers.goUp = function(choiceNum){ 
     //We need to get the CORRESPONDING thing that we clicked that we intelligently stored elsewhere in memory
-    if(MyControllers.atPanels) { MyControllers.atPanels = false; }
+    if(MyControllers.atPanels) {
+        MyControllers.atPanels = false;
+        MyControllers.storedPanels = ['', '', '', ''];
+        refreshPanels();
+    }
 
     MyControllers.categoryStack.pop();
     console.log(MyControllers.categoryStack.toString());
@@ -125,4 +132,21 @@ MyControllers.setup = function() {
         console.log("Made it here!");
         MyControllers.goUp();
     });
+}
+
+// Function to set panel text
+function refreshPanels(){
+    // Set panel text
+    document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[0]);
+    document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[1]);
+    document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[2]);
+    document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[3]);
+
+    // Set object to hidden object
+    aScene.removeChild(currentObject);
+    var galleryMesh = document.createElement("a-plane");
+    galleryMesh.setAttribute("id", "hidden");
+    galleryMesh.setAttribute("visible", "false");
+    aScene.appendChild(galleryMesh);
+    currentObject = document.getElementById("hidden");
 }
