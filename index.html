@@ -36,7 +36,12 @@
       <a-asset-item id="hulk-mtl" src="/assets/models/Bookshelfstuff/Hulk.mtl"></a-asset-item>
       <a-asset-item id="cat-obj" src="/assets/models/Bookshelfstuff/cat1.obj"></a-asset-item>
       <a-asset-item id="cat-mtl" src="/assets/models/Bookshelfstuff/cat1.mtl"></a-asset-item>
-      
+      <a-asset-item id="charizard-obj" src="/assets/models/Bookshelfstuff/Charizard.obj"></a-asset-item>
+      <a-asset-item id="charizard-mtl" src="/assets/models/Bookshelfstuff/Charizard.mtl"></a-asset-item>
+      <a-asset-item id="crash-obj" src="/assets/models/Bookshelfstuff/crash.obj"></a-asset-item>
+      <a-asset-item id="crash-mtl" src="/assets/models/Bookshelfstuff/crash.mtl"></a-asset-item>
+      <a-asset-item id="sax-obj" src="/assets/models/Bookshelfstuff/altosaxophone1.obj"></a-asset-item>
+      <a-asset-item id="sax-mtl" src="/assets/models/Bookshelfstuff/altosaxophone1.mtl"></a-asset-item>
       //table stuff
       <a-asset-item id="table-obj" src="/assets/models/mesa.obj"></a-asset-item>
       <a-asset-item id="table-mtl" src="/assets/models/mesa.mtl"></a-asset-item>
@@ -160,8 +165,20 @@
           <a-plane position="-0.36 57.01 27.25" rotation="270 0 0" scale="140 80 120" geometry="primitive:box" id="bHulkHelper" material="opacity:0"></a-plane>
         </a-entity>
 
-        <a-entity position="-14.11 223.39 -1.75" id="bCat" obj-model="obj:#cat-obj;mtl:#cat-mtl" scale="2 2 1" material="" rotation="0 90 0">
+        <a-entity position="-10.18 2.68 -1.75" id="bCat" obj-model="obj:#cat-obj;mtl:#cat-mtl" scale="2 1.8 1" material="" rotation="0 90 0">
           <a-plane position="-10.65 12.19 16.86" rotation="270 0 0" scale="30 35 25" geometry="primitive:box" id="bCatHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="-64.27 53.17 -1.75" id="bCharizard" obj-model="obj:#charizard-obj;mtl:#charizard-mtl" scale="2 2 1" material="opacity:1" rotation="0 90 0">
+          <a-plane position="-4.74 5.89 16.86" rotation="270 0 0" scale="35 35 20" geometry="primitive:box" id="bCharizardHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="-43.29 133.84 -1.75" id="bCrash" obj-model="obj:#crash-obj;mtl:#crash-mtl" scale="0.5 0.25 0.5" material="" rotation="270 90 0">
+          <a-plane position="10.6 42.26 23.42" rotation="270 0 0" scale="50 40 100" geometry="primitive:box" id="bCrashHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="-58.16 -16.85 -1.53" id="bSax" obj-model="obj:#sax-obj;mtl:#sax-mtl" scale="0.4 0.4 0.4" material="" rotation="0 90 0">
+          <a-plane position="-3.75 85.72 36.19" rotation="270 0 0" scale="50 60 100" geometry="primitive:box" id="bSaxHelper" material="opacity:0"></a-plane>
         </a-entity>
       </a-entity>
      <!--picture frame-->
@@ -303,6 +320,18 @@
   document.querySelector('#bCatHelper').addEventListener('click', function () {
       var audio = new Audio('/assets/sounds/meow.wav');
        audio.play();
+    });
+  document.querySelector('#bCharizardHelper').addEventListener('click', function () {
+    var audio = new Audio('/assets/sounds/charizard.wav');
+      audio.play();
+  });
+  document.querySelector('#bCrashHelper').addEventListener('click', function () {
+    var audio = new Audio('/assets/sounds/Crash.wav');
+      audio.play();
+  });
+  document.querySelector('#bSaxHelper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/sax.wav');
+        audio.play();
     });
   document.querySelector('#pic1Helper').addEventListener('click', function () {
       var audio = new Audio('/assets/sounds/heman.wav');
