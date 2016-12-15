@@ -19,7 +19,8 @@ MyControllers.promptInADirection = function (direction, loc0, loc1, loc2) {
         MyControllers.currentIndex = MyControllers.storedCategories.length - 3;
     }
     MyControllers.currentCategories = [];
-    maxDistanceAlong = (MyControllers.storedCategories.length < MyControllers.currentIndex + 3) ? MyControllers.storedCategories.length : (MyControllers.currentIndex + 3);
+    maxDistanceAlong = (MyControllers.storedCategories.length < (MyControllers.currentIndex + 3)) ? MyControllers.storedCategories.length : (MyControllers.currentIndex + 3);
+    //console.log("Current index is" + currentIndex);
     for (x = MyControllers.currentIndex; x < maxDistanceAlong; x++) {
         MyControllers.currentCategories.push(MyControllers.storedCategories[x]);
     }
@@ -56,10 +57,19 @@ MyControllers.getAResult = function(choiceNum){
             // Get object information from the server for the given panels
         }
         else{
-            MyControllers.storedCategories = this.responseText.split(',');
-            console.log(MyControllers.storedCategories.toString());
-            MyControllers.currentIndex = 0; //Reset the index
-            MyControllers.promptInADirection(0, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
+            console.log(this.responseText);
+            console.log(MyControllers.storedCategories.toString())
+            if (this.responseText == MyControllers.storedCategories.toString()){ //If the same, there's nothing lower
+                MyControllers.categoryStack.pop();
+                //console.log(MyControllers.categoryStack.toString());
+            }
+            else {
+                MyControllers.storedCategories = this.responseText.split(',');
+                //console.log(MyControllers.storedCategories.toString());
+                MyControllers.currentIndex = 0; //Reset the index
+                MyControllers.promptInADirection(0, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
+            }
+           
         }
     }
     oReq.addEventListener("load", tempReqListener);
