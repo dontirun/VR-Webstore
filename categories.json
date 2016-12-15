@@ -650,6 +650,6 @@
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
 			"position" : "0.59 1.26 -.89"
-		},
+		}
 	]
 }
