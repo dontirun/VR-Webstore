@@ -24,9 +24,9 @@ MyControllers.promptInADirection = function (direction, loc0, loc1, loc2) {
     for (x = MyControllers.currentIndex; x < maxDistanceAlong; x++) {
         MyControllers.currentCategories.push(MyControllers.storedCategories[x]);
     }
-    loc0.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[0] + "; align: left; color: white");
-    loc1.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[1] + "; align: left; color: white");
-    loc2.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[2] + "; align: left; color: white");
+    loc0.setAttribute("bmfont-text", "text:  " + (MyControllers.currentCategories[0] !== undefined ? MyControllers.currentCategories[0] : " ")  + "; align: left; color: white");
+    loc1.setAttribute("bmfont-text", "text:  " + (MyControllers.currentCategories[1] !== undefined ? MyControllers.currentCategories[1] : " ")  + "; align: left; color: white");
+    loc2.setAttribute("bmfont-text", "text:  " + (MyControllers.currentCategories[2] !== undefined ? MyControllers.currentCategories[2] : " ")  + "; align: left; color: white");
 }
 
 //Controls the individual categories, so that you can descend categories
@@ -71,6 +71,7 @@ MyControllers.getAResult = function(choiceNum){
             }
            
         }
+        document.querySelector("#categoryPlaneText").setAttribute("bmfont-text", "text:  " + MyControllers.categoryStack[MyControllers.categoryStack.length - 1] + "; align: left; color: white");
     }
     oReq.addEventListener("load", tempReqListener);
     oReq.open("POST", "/readSelectedCategory", true);
@@ -87,7 +88,7 @@ MyControllers.goUp = function(choiceNum){
     if (MyControllers.categoryStack.length !== 1){
         MyControllers.categoryStack.pop();
     }
-    
+    document.querySelector("#categoryPlaneText").setAttribute("bmfont-text", "text:  " + MyControllers.categoryStack[MyControllers.categoryStack.length - 1] + "; align: left; color: white");
     console.log(MyControllers.categoryStack.toString());
     var oReq = new XMLHttpRequest();
     function tempReqListener() {
