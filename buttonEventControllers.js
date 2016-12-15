@@ -34,6 +34,17 @@ MyControllers.getAResult = function(choiceNum){
     //We need to get the CORRESPONDING thing that we clicked that we intelligently stored elsewhere in memory
     if(MyControllers.atPanels) { MyControllers.categoryStack.pop(); }
 
+    MyControllers.atPanels = false;
+    MyControllers.storedPanels = ['', '', '', ''];
+    // Delete object
+    aScene.removeChild(currentObject);
+    var galleryMesh = document.createElement("a-plane");
+    galleryMesh.setAttribute("id", "hidden");
+    galleryMesh.setAttribute("visible", "false");
+    aScene.appendChild(galleryMesh);
+    currentObject = document.getElementById("hidden");
+    refreshPanels();
+
     MyControllers.categoryStack.push(MyControllers.currentCategories[choiceNum - 1]);
     console.log(MyControllers.categoryStack.toString());
     var oReq = new XMLHttpRequest();
@@ -80,11 +91,18 @@ MyControllers.getAResult = function(choiceNum){
 
 MyControllers.goUp = function(choiceNum){ 
     //We need to get the CORRESPONDING thing that we clicked that we intelligently stored elsewhere in memory
-    if(MyControllers.atPanels) {
-        MyControllers.atPanels = false;
-        MyControllers.storedPanels = ['', '', '', ''];
-        refreshPanels();
-    }
+
+    MyControllers.atPanels = false;
+    MyControllers.storedPanels = ['', '', '', ''];
+    // Delete object
+    aScene.removeChild(currentObject);
+    var galleryMesh = document.createElement("a-plane");
+    galleryMesh.setAttribute("id", "hidden");
+    galleryMesh.setAttribute("visible", "false");
+    aScene.appendChild(galleryMesh);
+    currentObject = document.getElementById("hidden");
+    refreshPanels();
+
     if (MyControllers.categoryStack.length !== 1){
         MyControllers.categoryStack.pop();
     }
