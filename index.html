@@ -95,7 +95,7 @@
       <a-entity position="1.61 1.09 -0.01" id="menu" rotation="0 -38 0" visible="true" scale="0.5 0.5 1">
         <a-plane width="4" height="3" color="white" position="0 .2 -0.3" rotation="-8 0 0" material="" geometry="" opacity=".7"></a-plane>
         <a-plane width="3" height= "0.3" color="#0D47A1" id="categoryplane" position="-.1 1.5 -0.2" rotation="-8 0 0" material="" geometry="">
-         <a-entity bmfont-text="text: Categories; align: left; color: white;" position="-1.5 0 .01"></a-entity>
+         <a-entity id="categoryPlaneText" bmfont-text="text: Categories; align: left; color: white;" position="-1.5 0 .01"></a-entity>
         </a-plane>
         <a-plane width="3" height="0.5" color="#2196F3" id="item1" radius=".5" position="0 1 -0.3" rotation="-8 0 0" material="" geometry="">
           <a-entity id="item1Text" bmfont-text="text: Item1; align: left; color: white;" position="-1.5 0 .01"></a-entity> <!-- Horrible dithering unless .01 is used instead of 0-->
@@ -225,9 +225,10 @@
       <audio id="pic1audio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>-->
 </body>
   <script>
-  var MyControllers = MyControllers || {};
-  MyControllers.setup();
-  startTime();
+    var MyControllers = MyControllers || {};
+    MyControllers.setup();
+    startTime();
+
     //var aframe = require('aframe');
     //var text =require('aframe-bmfont-text-component');
 
@@ -289,6 +290,7 @@
     var tempPlane2 =false;
     var child = false;
     var currentObject = document.getElementById("hidden");
+    var activePanel = '';
 // register sound onclickfor objects
   document.querySelector('#registerHelper').addEventListener('click', function () {
         var audio = new Audio('/assets/sounds/register.wav');
@@ -339,7 +341,111 @@
       var audio = new Audio('/assets/sounds/heman.wav');
        audio.play();
     });
+
+  // Panel Listeners
+  document.querySelector('#blPanel').addEventListener('click', function(){
+    if(activePanel == "blPanel"){
+      aScene.removeChild(currentObject);
+      document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[0]);
+      var galleryMesh = document.createElement("a-plane");
+      galleryMesh.setAttribute("id", "hidden");
+      galleryMesh.setAttribute("visible", "false");
+      aScene.appendChild(galleryMesh);
+      currentObject = document.getElementById("hidden");
+
+      activePanel = '';
+    }
+    else{
+      var oReq = new XMLHttpRequest();
+      function tempReqListener(){
+        var objValues = JSON.parse(this.responseText);
+
+        activePanel = 'tlPanel';
+      }
+      oReq.addEventListener("load", tempReqListener);
+      oReq.open("POST", "/getobject", true);
+      oReq.send('getobject=' + MyControllers.storedPanels[0]);
+
+      activePanel = 'blPanel';
+    }
+  });
+
+  document.querySelector('#tlPanel').addEventListener('click', function(){
+    if(activePanel == "tlPanel"){
+      aScene.removeChild(currentObject);
+      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[1]);
+      var galleryMesh = document.createElement("a-plane");
+      galleryMesh.setAttribute("id", "hidden");
+      galleryMesh.setAttribute("visible", "false");
+      aScene.appendChild(galleryMesh);
+      currentObject = document.getElementById("hidden");
+
+      activePanel = '';
+    }
+    else{
+      var oReq = new XMLHttpRequest();
+      function tempReqListener(){
+        var objValues = JSON.parse(this.responseText);
+
+        activePanel = 'tlPanel';
+      }
+      oReq.addEventListener("load", tempReqListener);
+      oReq.open("POST", "/getobject", true);
+      oReq.send('getobject=' + MyControllers.storedPanels[1]);
+    }
+  });
+
+  document.querySelector('#trPanel').addEventListener('click', function(){
+    if(activePanel == "trPanel"){
+      aScene.removeChild(currentObject);
+      document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[2]);
+      var galleryMesh = document.createElement("a-plane");
+      galleryMesh.setAttribute("id", "hidden");
+      galleryMesh.setAttribute("visible", "false");
+      aScene.appendChild(galleryMesh);
+      currentObject = document.getElementById("hidden");
+
+      activePanel = '';
+    }
+    else{
+      var oReq = new XMLHttpRequest();
+      function tempReqListener(){
+        var objValues = JSON.parse(this.responseText);
+
+        activePanel = 'trPanel';
+      }
+      oReq.addEventListener("load", tempReqListener);
+      oReq.open("POST", "/getobject", true);
+      oReq.send('getobject=' + MyControllers.storedPanels[2]);
+    }
+  });
+
+  document.querySelector('#brPanel').addEventListener('click', function(){
+    if(activePanel == "brPanel"){
+      aScene.removeChild(currentObject);
+      document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[3]);
+      var galleryMesh = document.createElement("a-plane");
+      galleryMesh.setAttribute("id", "hidden");
+      galleryMesh.setAttribute("visible", "false");
+      aScene.appendChild(galleryMesh);
+      currentObject = document.getElementById("hidden");
+
+      activePanel = '';
+    }
+    else{
+      var oReq = new XMLHttpRequest();
+      function tempReqListener(){
+        var objValues = JSON.parse(this.responseText);
+
+        activePanel = 'brPanel';
+      }
+      oReq.addEventListener("load", tempReqListener);
+      oReq.open("POST", "/getobject", true);
+      oReq.send('getobject=' + MyControllers.storedPanels[3]);
+    }
+  });
   
+  /*
   document.querySelector('#blPanel').addEventListener('click', function () {
     if(currentObject.id == "testPlane" ){
       aScene.removeChild(currentObject);
@@ -451,6 +557,7 @@
       currentObject = document.getElementById("testPlane3");
   }
 });
+*/
 
 
 // clock functions
