@@ -34,6 +34,9 @@
       <a-asset-item id="beethoven-mtl" src="/assets/models/Bookshelfstuff/beethoven.mtl"></a-asset-item>
       <a-asset-item id="hulk-obj" src="/assets/models/Bookshelfstuff/Hulk.obj"></a-asset-item>
       <a-asset-item id="hulk-mtl" src="/assets/models/Bookshelfstuff/Hulk.mtl"></a-asset-item>
+      <a-asset-item id="cat-obj" src="/assets/models/Bookshelfstuff/cat1.obj"></a-asset-item>
+      <a-asset-item id="cat-mtl" src="/assets/models/Bookshelfstuff/cat1.mtl"></a-asset-item>
+      
       //table stuff
       <a-asset-item id="table-obj" src="/assets/models/mesa.obj"></a-asset-item>
       <a-asset-item id="table-mtl" src="/assets/models/mesa.mtl"></a-asset-item>
@@ -108,7 +111,7 @@
       </a-entity>
 
       <!--clock-->
-      <a-entity position="-1.87 3.5 -5.71" scale="2 1 0.2" color="#c0c0c0" material="color:#c0c0c0" geometry="depth:1" id="clock">
+      <a-entity position="-1.87 3.5 -6.08" scale="2 1 0.2" color="#c0c0c0" material="color:#c0c0c0" geometry="depth:1" id="clock">
         <a-entity position="0 0 0.54" scale="0.9 0.8 1" color="#000000" material="color:#000000" geometry="primitive:plane" id="clockface"></a-entity>
         <a-entity bmfont-text="text:23:13;color:#ff0000;align:'left'" position="-0.36 -0.17 0.55" rotation="0 0 0" scale="1.5 3 1" id="time"></a-entity> 
       </a-entity>
@@ -123,21 +126,47 @@
        <a-entity position="211.39 -370.59 36.48" id="lighting1" obj-model="obj:#lighting-obj;mtl:#lighting-mtl" scale="0.1 0.1 0.1"  material="" rotation="0 0 0"></a-entity>
       </a-entity>
       <a-entity position="0 -0.1 0" scale="1 0 1" id="floor" geometry="primitive:box;radius:45;width:45;height:1;depth:45" material="src:#woodfloor"></a-entity>
-      <a-entity position="-0.66 1.02 -0.94" id="register" obj-model="obj:#register-obj;mtl:#register-mtl" scale="0.25 0.25 0.25" color="#804040" material="" rotation="0 270 0"></a-entity>
+      <a-entity position="-0.66 1.02 -0.94" id="register" obj-model="obj:#register-obj;mtl:#register-mtl" scale="0.25 0.25 0.25" color="#804040" material="" rotation="0 270 0">
+        <a-plane position="-0.14 0.26 0.03" rotation="0 0 0" scale="2.1 0.7 1.3" geometry="primitive:box" id="registerHelper" material="opacity:0"></a-plane>
+      </a-entity>
       <a-entity position="0 1 -0.9" id="table1" obj-model="obj:#table-obj;mtl:#table-mtl" scale="0.01 0.02 0.01" color="#804040" material=""></a-entity>
 
       <!--bookshelf and sub objects-->
       <a-entity position="3.92 0.1 -0.46" id="bookshelf1" obj-model="obj:#bookshelf-obj;mtl:#bookshelf-mtl" scale="0.05 0.02 0.02" color="#804040" material="" rotation="0 90 0">
-        <a-entity position="0 86.71 0" id="bCow" obj-model="obj:#cow-obj;mtl:#cow-mtl" scale="0.25 0.5 1" color="#804040" material="" rotation="0 0 0"></a-entity>
-        <a-entity position="52.34 144.93 21.59" id="bFootBones" obj-model="obj:#footbones-obj" scale="0.25 0.5 1" color="#804040" material="" rotation="0 180 0"></a-entity>
-        <a-entity position="-24.97 190.92 -2.92" id="bShuttle" obj-model="obj:#shuttle-obj;mtl:#shuttle-mtl" scale="0.5 0.5 0.5" material="" rotation="0 180 90"></a-entity>
-        <a-entity position="10.4 134.03 -2.18" id="bTrophy" obj-model="obj:#trophy-obj;mtl:#trophy-mtl" scale="0.2 0.4 0.4" material="" rotation="270 0 0"></a-entity>
-        <a-entity position="-46.74 110.17 9.64" id="bBeethoven" obj-model="obj:#beethoven-obj;mtl:#beethoven-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0"></a-entity>
-        <a-entity position="52.89 87.98 9.64" id="bHulk" obj-model="obj:#hulk-obj;mtl:#hulk-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0"></a-entity>
+        
+        <a-entity position="0 86.71 0" id="bCow" obj-model="obj:#cow-obj;mtl:#cow-mtl" scale="0.25 0.5 1" color="#804040" material="" rotation="0 0 0">
+          <a-plane position="1.72 42.06 9.17" rotation="270 0 0" scale="120 40 70" geometry="primitive:box" id="bCowHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="52.34 144.93 21.59" id="bFootBones" obj-model="obj:#footbones-obj" scale="0.25 0.5 1" color="#804040" material="" rotation="0 180 0">
+          <a-plane position="0.42 10.33 22.87" rotation="270 0 0" scale="120 40 70" geometry="primitive:box" id="bFootBonesHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="-24.97 190.92 -2.92" id="bShuttle" obj-model="obj:#shuttle-obj;mtl:#shuttle-mtl" scale="0.5 0.5 0.5" material="" rotation="0 180 90">
+          <a-plane position="1.72 16.05 9.17" rotation="270 0 0" scale="100 40 150" geometry="primitive:box" id="bShuttleHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="10.4 134.03 -2.18" id="bTrophy" obj-model="obj:#trophy-obj;mtl:#trophy-mtl" scale="0.2 0.4 0.4" material="" rotation="270 0 0">
+          <a-plane position="0.08 -16.45 30.86" rotation="270 0 0" scale="65 60 70" geometry="primitive:box" id="bTrophyHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="-46.74 110.17 9.64" id="bBeethoven" obj-model="obj:#beethoven-obj;mtl:#beethoven-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0">
+          <a-plane position="-0.07 -1.09 32.4" rotation="270 0 0" scale="100 80 120" geometry="primitive:box" id="bBeethovenHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="52.89 87.98 9.64" id="bHulk" obj-model="obj:#hulk-obj;mtl:#hulk-mtl" scale="0.2 0.35 0.3" material="" rotation="0 180 0">
+          <a-plane position="-0.36 57.01 27.25" rotation="270 0 0" scale="140 80 120" geometry="primitive:box" id="bHulkHelper" material="opacity:0"></a-plane>
+        </a-entity>
+
+        <a-entity position="-14.11 223.39 -1.75" id="bCat" obj-model="obj:#cat-obj;mtl:#cat-mtl" scale="2 2 1" material="" rotation="0 90 0">
+          <a-plane position="-10.65 12.19 16.86" rotation="270 0 0" scale="30 35 25" geometry="primitive:box" id="bCatHelper" material="opacity:0"></a-plane>
+        </a-entity>
       </a-entity>
      <!--picture frame-->
-      <a-entity position="1.58 3.42 -5.26" id="frame" obj-model="obj:#pic-obj;mtl:#pic-mtl" scale="0.015 0.015 0.015" color="#804040" material="" rotation="0 0 0">
-        <a-entity position="-0.4 0 0" rotation="0 0 0" id="pic1" scale="78 60 1" material="src:#heman" geometry="primitive:box"></a-entity>
+      <a-entity position="1.58 3.42 -6.18" id="frame" obj-model="obj:#pic-obj;mtl:#pic-mtl" scale="0.015 0.015 0.015" color="#804040" material="" rotation="0 0 0">
+        <a-entity position="-0.4 0 0" rotation="0 0 0" id="pic1" scale="78 60 1" material="src:#heman" geometry="primitive:box">
+          <a-plane position="0 0 1" rotation="270 0 0" scale="1 1 1" geometry="primitive:box" id="pic1Helper" material="opacity:0"></a-plane>>
+        </a-entity>
       </a-entity>
   
 
@@ -165,7 +194,14 @@
             <a-entity light="color:#FFF;intensity:0.6;type:point" position="0.07 7.07 -0.5"></a-entity>
             <a-entity light="color:#BBB;intensity:0.5;type:ambient"  position="0 0 0"></a-entity>
         
-
+      <!--<audio id="bCowaudio" src="/assets/sounds/cow-moo1.wav" ></audio>
+      <audio id="bBonesaudio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>
+      <audio id="bShuttleaudio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>
+      <audio id="bTrophyaudio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>
+      <audio id="bBeethovenaudio" src="/assets/sounds/cow-moo1.wav" ></audio>
+      <audio id="bHulkaudio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>
+      <audio id="bCataudio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>
+      <audio id="pic1audio" src="http://dev.interactive-creation-works.net/1/1.ogg" ></audio>-->
 </body>
   <script>
   var MyControllers = MyControllers || {};
@@ -232,10 +268,45 @@
     var tempPlane2 =false;
     var child = false;
     var currentObject = document.getElementById("hidden");
-// register sound onclick possibly, can't get onclick for the object to work'
-  document.querySelector('#register').addEventListener('click', function () {
-    console.log("Wow this is working");
+// register sound onclickfor objects
+  document.querySelector('#registerHelper').addEventListener('click', function () {
+        var audio = new Audio('/assets/sounds/register.wav');
+        audio.play();
+      });
+  document.querySelector('#bCowHelper').addEventListener('click', function () {
+       var audio = new Audio('/assets/sounds/cow-moo1.wav');
+       audio.play();
     });
+  document.querySelector('#bFootBonesHelper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/spookyscary.wav');
+       audio.play();
+    });
+  document.querySelector('#bShuttleHelper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/liftoff.wav');
+       audio.play();
+    });
+  document.querySelector('#bTrophyHelper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/smallitem.wav');
+       audio.play();
+    });
+  document.querySelector('#bBeethovenHelper').addEventListener('click', function () {
+   var audio = new Audio('/assets/sounds/furelise.wav');
+       audio.play();
+   
+    });
+  document.querySelector('#bHulkHelper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/hulksmash.wav');
+       audio.play();
+    });
+  document.querySelector('#bCatHelper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/meow.wav');
+       audio.play();
+    });
+  document.querySelector('#pic1Helper').addEventListener('click', function () {
+      var audio = new Audio('/assets/sounds/heman.wav');
+       audio.play();
+    });
+  
   document.querySelector('#blPanel').addEventListener('click', function () {
     if(currentObject.id == "testPlane" ){
       aScene.removeChild(currentObject);
