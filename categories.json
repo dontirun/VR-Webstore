@@ -93,7 +93,7 @@
 		},
 		{
 			"name" : "Trophy",
-			"id" : "trophyn",
+			"id" : "trophy",
 			"obj-id" : "trophy-obj",
 			"mtl-id" : "trophy-mtl",
 			"obj-path" : "/assets/models/Bookshelfstuff/trophycup.obj",
