@@ -71,7 +71,14 @@ function buildCurrentJSONPath(depth, array){
       subJSON = subJSON['Categories'];
     }
     else {
-      subJSON = subJSON[array[x - 1]];
+      // function isArrayEmpty(anArray){
+      //   return anArray.filter(function(el) {
+      //     return Object.keys.
+      //   })
+      // } 
+      if (subJSON[array[x - 1]] !== undefined) {
+        subJSON = subJSON[array[x - 1]];
+      }
     }
   }
   return subJSON;
@@ -118,6 +125,11 @@ function handlePost(req, res) {
       if(Object.prototype.toString.call(tempJSON) === '[object Array]'){
         // Panel Values
         var panelVals = ['PANEL'];
+        if (tempJSON.length === 0) {
+          categoryStack.pop();
+          tempJSON = buildCurrentJSONPath(categoryStack.length, categoryStack);
+           res.end(Object.keys(tempJSON).toString());
+        }
         for(var i in tempJSON){
           panelVals.push(tempJSON[i]);
         }
@@ -126,6 +138,7 @@ function handlePost(req, res) {
       }
       else{
         // JSON
+        console.log("Here's the temp JSON" + tempJSON);
         res.end(Object.keys(tempJSON).toString());
       }
     }
