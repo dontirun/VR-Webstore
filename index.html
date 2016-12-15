@@ -85,27 +85,28 @@
 
       <!-- Menu entities -->
       <a-entity position="1.61 1.09 -0.01" id="menu" rotation="0 -38 0" visible="true" scale="0.5 0.5 1">
-        <a-plane width="3" height= "0.3" color="green" id="categoryplane" position="0 1.5 -0.2" rotation="-8 0 0" material="" geometry="">
+        <a-plane width="3" height="3" color="#2196F3" id="item1" position="0 .2 -0.3" rotation="-8 0 0" material="" geometry=""></a-plane>
+        <a-plane width="3" height= "0.3" color="#0D47A1" id="categoryplane" position="0 1.5 -0.2" rotation="-8 0 0" material="" geometry="">
          <a-entity bmfont-text="text: Categories; align: left;" position="-1.5 0 .01"></a-entity>
         </a-plane>
-        <a-plane width="3" height="0.5" color="gray" id="item1" position="0 1 -0.3" rotation="-8 0 0" material="" geometry="">
+        <a-plane width="3" height="0.5" color="white" id="item1" position="0 1 -0.3" rotation="-8 0 0" material="" geometry="">
           <a-entity id="item1Text" bmfont-text="text: Item1; align: left;" position="-1.5 0 .01"></a-entity> <!-- Horrible dithering unless .01 is used instead of 0-->
         </a-plane>
-        <a-plane width="3" height="0.5" color="gray" id="item2" position="0 0.4 -0.2" rotation="-8 0 0" material="" geometry="">
+        <a-plane width="3" height="0.5" color="white" id="item2" position="0 0.4 -0.2" rotation="-8 0 0" material="" geometry="">
           <a-entity id="item2Text" bmfont-text="text: Item2; align: left;" position="-1.5 0 .01"></a-entity>
         </a-plane>
-        <a-plane width="3" height="0.5" color="gray" id="item3" position="0 -0.2 -0.1" rotation="-8 0 0" material="" geometry="">
+        <a-plane width="3" height="0.5" color="white" id="item3" position="0 -0.2 -0.1" rotation="-8 0 0" material="" geometry="">
           <a-entity id="item3Text" bmfont-text="text: Item3; align: left;" position="-1.5 0 .01"></a-entity>
         </a-plane>
 
         <!-- Arrows -->
-        <a-entity position="1 -1 0" rotation="-8 0 0" id="forwardArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material="">
+        <a-entity position="1 -1 0" rotation="-8 0 0" id="forwardArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .1" color="#804040" material="">
           <a-plane position="-0.07 0.02 0.01" rotation="270 0 0" scale="4 1.2 3.05" geometry="primitive:box" id="forwardArrowHelper" material="opacity:0"></a-plane>
         </a-entity>
-        <a-entity position="-1 -1 0" rotation="8 180 0" id="backArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material="">
+        <a-entity position="-1 -1 0" rotation="8 180 0" id="backArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .1" color="#804040" material="">
           <a-plane position="-0.07 0.02 0.01" rotation="270 0 0" scale="4 1.2 3.05" geometry="primitive:box" id="backArrowHelper" material="opacity:0"></a-plane>
         </a-entity>
-        <a-entity position="-2 1 0" rotation="0 0 90" id="upArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .2" color="#804040" material="">
+        <a-entity position="-2 1 0" rotation="-8 0 90" id="upArrow" obj-model="obj:#arrow-obj;mtl:#arrow-mtl" scale=".2 .2 .1" color="#804040" material="">
           <a-plane position="-0.07 0.02 0.01" rotation="270 0 0" scale="4 1.2 3.05" geometry="primitive:box" id="upArrowHelper" material="opacity:0"></a-plane>
         </a-entity>
       </a-entity>
