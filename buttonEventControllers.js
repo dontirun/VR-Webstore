@@ -3,7 +3,8 @@
 
 var MyControllers = MyControllers || {};
 
-
+MyControllers.atPanels = false;
+MyControllers.storedPanels = [];
 MyControllers.storedCategories = [];
 MyControllers.currentIndex = 0;
 MyControllers.currentCategories = [];
@@ -18,26 +19,45 @@ MyControllers.promptInADirection = function (direction, loc0, loc1, loc2) {
         MyControllers.currentIndex = MyControllers.storedCategories.length - 3;
     }
     MyControllers.currentCategories = [];
-    maxDistanceAlong = (MyControllers.storedCategories.length < MyControllers.currentIndex + 3) ? MyControllers.storedCategories.length : (MyControllers.currentIndex + 3); 
+    maxDistanceAlong = (MyControllers.storedCategories.length < MyControllers.currentIndex + 3) ? MyControllers.storedCategories.length : (MyControllers.currentIndex + 3);
     for (x = MyControllers.currentIndex; x < maxDistanceAlong; x++) {
         MyControllers.currentCategories.push(MyControllers.storedCategories[x]);
     }
-    loc0.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[0] + "; align: left");
-    loc1.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[1] + "; align: left");
-    loc2.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[2] + "; align: left");
+    loc0.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[0] + "; align: left; color: white");
+    loc1.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[1] + "; align: left; color: white");
+    loc2.setAttribute("bmfont-text", "text:  " + MyControllers.currentCategories[2] + "; align: left; color: white");
 }
 
 //Controls the individual categories, so that you can descend categories
 MyControllers.getAResult = function(choiceNum){ 
     //We need to get the CORRESPONDING thing that we clicked that we intelligently stored elsewhere in memory
+    if(MyControllers.atPanels) { MyControllers.categoryStack.pop(); }
+
     MyControllers.categoryStack.push(MyControllers.currentCategories[choiceNum - 1]);
     console.log(MyControllers.categoryStack.toString());
     var oReq = new XMLHttpRequest();
     function tempReqListener() {
-        MyControllers.storedCategories = this.responseText.split(',');
-        console.log(MyControllers.storedCategories.toString());
-        MyControllers.currentIndex = 0; //Reset the index
-        MyControllers.promptInADirection(0, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
+        if(this.responseText.indexOf('PANEL') !== -1){
+            MyControllers.atPanels = true;
+        }
+        else{
+            MyControllers.atPanels = false;
+        }
+
+        if(MyControllers.atPanels){
+            var tmpList = this.responseText.split(',');
+            tmpList.splice(0,1); // Remove PANEL identifier
+
+            // Call panel update function
+
+            // Get object information from the server for the given panels
+        }
+        else{
+            MyControllers.storedCategories = this.responseText.split(',');
+            console.log(MyControllers.storedCategories.toString());
+            MyControllers.currentIndex = 0; //Reset the index
+            MyControllers.promptInADirection(0, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
+        }
     }
     oReq.addEventListener("load", tempReqListener);
     oReq.open("POST", "/readSelectedCategory", true);
@@ -46,6 +66,8 @@ MyControllers.getAResult = function(choiceNum){
 
 MyControllers.goUp = function(choiceNum){ 
     //We need to get the CORRESPONDING thing that we clicked that we intelligently stored elsewhere in memory
+    if(MyControllers.atPanels) { MyControllers.atPanels = false; }
+
     MyControllers.categoryStack.pop();
     console.log(MyControllers.categoryStack.toString());
     var oReq = new XMLHttpRequest();
@@ -104,23 +126,3 @@ MyControllers.setup = function() {
         MyControllers.goUp();
     });
 }
-
-/*
-MyControllers.promptInADirection = function (direction, loc0, loc1, loc2){
-    var oReq = new XMLHttpRequest();
-    function reqListener() {
-        var oReq2 = new XMLHttpRequest(); 
-        function reqListener2() { //This runs third
-            storedCategories = this.responseText.split(','); //Split on commas for this array
-            //console.log(storedCategories);
-            
-        }
-        oReq2.addEventListener("load", reqListener2); //This runs second
-        oReq2.open("GET", "/threeCategories");
-        oReq2.send();
-    }
-    oReq.addEventListener("load", reqListener); //This runs first
-    oReq.open("POST", "/readCategories", true);
-    oReq.send('readCategories=' + direction);
-}
-*/

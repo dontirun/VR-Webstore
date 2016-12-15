@@ -5,49 +5,24 @@ var http = require('http')
   , path = require('path')
   , port = 80
 
-// Add more movies! (For a technical challenge, use a file, or even an API!)
-var filteredMovies = [];
-var moviesFile = [];
 var categoriesPresent;
 var storedPath = [];
 var currentPointInList = 0;
 var currentJSON;
 var currentThreeCategories = [];
+
+// Read in from JSON
+categoriesFile = 
+  fs.readFileSync ('categories.json', 'utf8')
+    .toString()
+    .trim()
+categoriesPresent = JSON.parse(categoriesFile);
+currentJSON = currentJSON || buildCurrentJSONPath(0, []);
+currentThreeCategories = currentThreeCategories || [Object.keys(currentJSON)[0], Object.keys(currentJSON)[1], Object.keys(currentJSON)[2]];
+
 var server = http.createServer (function (req, res) {
-  moviesFile = 
-    fs.readFileSync ('categories.json', 'utf8')
-      .toString()
-      .trim()
-  categoriesPresent = JSON.parse(moviesFile);
-  //console.log(categoriesPresent);
-  currentJSON = currentJSON || buildCurrentJSONPath(0, []);
-  currentThreeCategories = currentThreeCategories || [Object.keys(currentJSON)[0], Object.keys(currentJSON)[1], Object.keys(currentJSON)[2]];
-  //var newData = '';
-  // req.on('data', function(c) {
-  //   newData = newData + c;
-  // });
-  // req.on('end', function() {
-  //   if (newData != '') {
-  //     var q = qs.parse(newData);
-  //     if (q.newMovie) {
-  //       moviesFile.push(q.newMovie);
-  //       fs.writeFileSync('movies.txt', moviesFile.join('\n'));
-  //     }
-  //     if (q.searchMovie) {
-  //       handleSearch(res, q.searchMovie);
-  //     }
-  //   }
-  //   newData = '';
-  // });
   var uri = url.parse(req.url)
-  console.log(uri.pathname);
   switch( uri.pathname ) {
-    // Note the new case handling search
-    case '/search':
-      //handleSearch(res, uri)
-      handlePost(req, res);
-      break;
-    // Note we no longer have   an index.html file, but we handle the cases since that's what the browser will request
     case '/readCategories':
       handlePost(req, res);
       break;
@@ -65,9 +40,6 @@ var server = http.createServer (function (req, res) {
       break;
     case '/getCategories':
       res.end(currentThreeCategories.toString());
-      break;
-    case '/filteredMovies':
-      res.end(filteredMovies.toString());
       break;
     case '/style.css':
       sendFile(res, 'style.css', 'text/css')
@@ -104,6 +76,7 @@ function buildCurrentJSONPath(depth, array){
   }
   return subJSON;
 }
+
 function handlePost(req, res) {
   var body = ''
 
@@ -140,73 +113,24 @@ function handlePost(req, res) {
       console.log(categoryStack.length);
       var tempJSON = buildCurrentJSONPath(categoryStack.length, categoryStack)
       console.log(tempJSON);
-      res.end(Object.keys(tempJSON).toString());
-    }
-    if(post.search) {
-      filteredMovies = moviesFile.filter(hasTheThing(post.search));
-      res.end();
-    }
 
-    if (post.reMovie) {
-      moviesFile =  moviesFile.filter(isNotTheThing(post.reMovie));
-      fs.writeFileSync('movies.txt', moviesFile.join('\n'));
-      res.end();
+      // Check if panel values are being send, or a subtree
+      if(Object.prototype.toString.call(tempJSON) === '[object Array]'){
+        // Panel Values
+        var panelVals = ['PANEL'];
+        for(var i in tempJSON){
+          panelVals.push(tempJSON[i]);
+        }
+
+        res.end(panelVals.toString());
+      }
+      else{
+        // JSON
+        res.end(Object.keys(tempJSON).toString());
+      }
     }
-    console.log( moviesFile ) 
   })
-  
-}
 
-function hasTheThing(theThing) {
-  return function(value) {
-    return (value.toLowerCase()).includes(theThing.toLowerCase()); //Make it case insensitive
-  }
-}
-function isNotTheThing(theThing) {
-  return function(value) {
-    return value.toLowerCase() !== theThing.toLowerCase(); //Make it case insensitive
-  }
-}
-
-// Note: consider this your "index.html" for this assignment
-function sendIndex(res, isFiltered) {
-  var contentType = 'text/html'
-    , html = ''
-
-  html = html + '<html>'
-
-  html = html + '<head>'
-  // You could add a CSS and/or js call here...
-  html = html + '</head>'
-
-  html = html + '<body>'
-  html = html + '<h1>Movie Search!</h1>'
-
-  // Here's where we build the form YOU HAVE STUFF TO CHANGE HERE
-  html = html + '<form action="search" method="post">';
-  html = html + '<input id="searchMovie" type="text" name="search" />';
-  html = html + '<button type="button">Search</button>';
-  html = html + '</form>';
-  //Make the form for adding a new movie
-  html = html + '<form action="add" method="post">';
-  html = html + '<label for="newMovie">Add New Movie</label>';
-  html = html + '<input id="newMovie" name="newMovie" type="text">';
-  html = html + '<button type="submit">Add Movie</button>';
-  html = html + '</form>';
-  html = html + '<ul>'
-  if (isFiltered === 1) {
-    html = html + filteredMovies.map(function(d) { return '<li>'+d+'</li>' }).join(' ')
-  }
-  else {
-      html = html + moviesFile.map(function(d) { return '<li>'+d+'</li>' }).join(' ')
-  }
-  html = html + '</ul>'
-
-  html = html + '</body>'
-  html = html + '</html>'
-  
-  res.writeHead(200, {'Content-type': contentType})
-  res.end(html, 'utf-8')
 }
 
 function sendFile(res, filename, contentType) {
