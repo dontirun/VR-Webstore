@@ -253,6 +253,18 @@
       rotateRight(currentObject);
     });
 
+    function createObject(objvalue){
+      var object = document.createElement("a-entity");
+      object.setAttribute("id", objvalues.id);
+      object.setAttribute("obj-model", objvalues.obj-model);
+      object.setAttribute("position", objvalues.position);
+      object.setAttribute("scale", objvalues.scale);
+      object.setAttribute("material", objvalues.material);
+      object.setAttribute("position", objvalues.position);
+      object.setAttribute("geometry", objvalues.geometry);
+      aScene.appendChild(object);
+      currentObject = document.getElementById(objvalues.id);
+    }
 
     // Left and Right rotation functions
     function rotateLeft(scene_element){
@@ -359,7 +371,7 @@
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);
-
+        createObject(objValues);
         activePanel = 'tlPanel';
       }
       oReq.addEventListener("load", tempReqListener);
@@ -386,7 +398,7 @@
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);
-
+        createObject(objValues);
         activePanel = 'tlPanel';
       }
       oReq.addEventListener("load", tempReqListener);
@@ -411,7 +423,7 @@
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);
-
+        createObject(objValues);
         activePanel = 'trPanel';
       }
       oReq.addEventListener("load", tempReqListener);
@@ -436,7 +448,7 @@
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
         var objValues = JSON.parse(this.responseText);
-
+        createObject(objValues);
         activePanel = 'brPanel';
       }
       oReq.addEventListener("load", tempReqListener);
