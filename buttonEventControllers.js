@@ -8,7 +8,7 @@ MyControllers.storedPanels = ['', '', '', ''];
 MyControllers.storedCategories = [];
 MyControllers.currentIndex = 0;
 MyControllers.currentCategories = [];
-MyControllers.categoryStack = [];
+MyControllers.categoryStack = ["Categories"];
 
 MyControllers.promptInADirection = function (direction, loc0, loc1, loc2) {
     MyControllers.currentIndex += direction;
@@ -84,8 +84,10 @@ MyControllers.goUp = function(choiceNum){
         MyControllers.storedPanels = ['', '', '', ''];
         refreshPanels();
     }
-
-    MyControllers.categoryStack.pop();
+    if (MyControllers.categoryStack.length !== 1){
+        MyControllers.categoryStack.pop();
+    }
+    
     console.log(MyControllers.categoryStack.toString());
     var oReq = new XMLHttpRequest();
     function tempReqListener() {

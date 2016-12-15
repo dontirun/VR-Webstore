@@ -17,7 +17,7 @@ categoriesFile =
     .toString()
     .trim()
 categoriesPresent = JSON.parse(categoriesFile);
-currentJSON = currentJSON || buildCurrentJSONPath(0, []);
+currentJSON = currentJSON || buildCurrentJSONPath(1, ["Categories"]);
 currentThreeCategories = currentThreeCategories || [Object.keys(currentJSON)[0], Object.keys(currentJSON)[1], Object.keys(currentJSON)[2]];
 
 var server = http.createServer (function (req, res) {
@@ -67,19 +67,14 @@ function buildCurrentJSONPath(depth, array){
   subJSON = categoriesPresent;
   console.log(depth);
   for (x = 0; x <= depth; x++) { //Iterate down to a maximum depth 
-    if (x === 0){ //Depth is the beginning
-      subJSON = subJSON['Categories'];
-    }
-    else {
       // function isArrayEmpty(anArray){
       //   return anArray.filter(function(el) {
       //     return Object.keys.
       //   })
       // } 
-      if (subJSON[array[x - 1]] !== undefined) {
-        subJSON = subJSON[array[x - 1]];
+      if (subJSON[array[x]] !== undefined) {
+        subJSON = subJSON[array[x]];
       }
-    }
   }
   return subJSON;
 }
