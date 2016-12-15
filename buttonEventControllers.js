@@ -44,6 +44,22 @@ MyControllers.getAResult = function(choiceNum){
     oReq.send('readSelectedCategory=' + MyControllers.categoryStack.toString());
 }
 
+MyControllers.goUp = function(choiceNum){ 
+    //We need to get the CORRESPONDING thing that we clicked that we intelligently stored elsewhere in memory
+    MyControllers.categoryStack.pop();
+    console.log(MyControllers.categoryStack.toString());
+    var oReq = new XMLHttpRequest();
+    function tempReqListener() {
+        MyControllers.storedCategories = this.responseText.split(',');
+        console.log(MyControllers.storedCategories.toString());
+        MyControllers.currentIndex = 0; //Reset the index
+        MyControllers.promptInADirection(0, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
+    }
+    oReq.addEventListener("load", tempReqListener);
+    oReq.open("POST", "/readSelectedCategory", true);
+    oReq.send('readSelectedCategory=' + MyControllers.categoryStack.toString());
+}
+
 MyControllers.setup = function() {
     //UI Arrow handlers
     //Also, a declaration of initial state
@@ -64,6 +80,10 @@ MyControllers.setup = function() {
         console.log("Made it here!");
         MyControllers.promptInADirection(-3, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
     });
+    document.querySelector('#upArrowHelper').addEventListener('click', function() {
+        console.log("Made it here!");
+        MyControllers.goUp();
+    });
     document.querySelector('#item1').addEventListener('click', function() {
         MyControllers.getAResult(1);
     });
@@ -78,6 +98,10 @@ MyControllers.setup = function() {
     });
     document.querySelector('#backArrowHelper').addEventListener('thumbup', function() {
         MyControllers.promptInADirection(-3, document.querySelector('#item1Text'), document.querySelector('#item2Text'), document.querySelector('#item3Text'));
+    });
+    document.querySelector('#upArrowHelper').addEventListener('thumbup', function() {
+        console.log("Made it here!");
+        MyControllers.goUp();
     });
 }
 
