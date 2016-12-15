@@ -181,3 +181,11 @@ function refreshPanels(){
     aScene.appendChild(galleryMesh);
     currentObject = document.getElementById("hidden");
 }
+
+function refreshPanelText(){
+    // Set panel text
+    document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[0]);
+    document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[1]);
+    document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[2]);
+    document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200; align:'left'; text:"+MyControllers.storedPanels[3]);
+}

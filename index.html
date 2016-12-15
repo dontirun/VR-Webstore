@@ -376,10 +376,10 @@
     }
     else{
       aScene.removeChild(currentObject);
+      refreshPanelText();
       document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
-        aScene.removeChild(currentObject);
         var objValues = JSON.parse(this.responseText);
         createObject(objValues);
         activePanel = 'blPanel';
@@ -404,6 +404,7 @@
     }
     else{
       aScene.removeChild(currentObject);
+      refreshPanelText();
       document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
@@ -431,6 +432,7 @@
     }
     else{
       aScene.removeChild(currentObject);
+      refreshPanelText();
       document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
@@ -459,6 +461,7 @@
     }
     else{
       aScene.removeChild(currentObject);
+      refreshPanelText();
       document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
       var oReq = new XMLHttpRequest();
       function tempReqListener(){
