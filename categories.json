@@ -2,12 +2,12 @@
     "Categories" : {
         "Computer Systems" : {
             "Desktops": {
-                "Desktop Computers": ["H440", "S340", "InWin 805", "InWin 805i", "Azza Genesis 9000", "Corsair Air 240"],
-                "Gaming Desktops": [],
-                "All-in-One Computers": [],
-                "Server & Workstations": [],
-                "Chromebox Desktops & Mini PCs": [],
-                "Business Desktops": []
+                "Desktop Computers": ["H440", "S340", "InWin 805", "InWin 805i"],
+                "Gaming Desktops": ["ALIa106", "FX-6300", "S256", "ArtPC"],
+                "All-in-One Computers": ["6100T", "C20-05", "A9-9410", "J3060"],
+                "Server & Workstations": ["x3100", "TS140", "E3-1200", "HFR7-SU3S2"],
+                "Chromebox Desktops & Mini PCs": ["NE630FX", "600 G2", "DC221HQ", "N3700"],
+                "Business Desktops": ["S510", "OptiPlex 3040", "EliteDesk 800 G2", "ATC-780A-UR11"]
             },
             "Laptops / Notebooks": [],
             "Gaming Laptops": [],
