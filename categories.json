@@ -12,10 +12,6 @@
 			"Narrow Cylinders": ["Narrow Cylinder 1", "Narrow Cylinder 2", "Narrow Cylinder 3", "Narrow Cylinder 4"],
 			"Wide Cylinders": ["Wide Cylinder 1", "Wide Cylinder 2", "Wide Cylinder 3", "Wide Cylinder 4"]
 		},
-		"Rings" : {
-			"Thin Rings": ["Thin Ring 1", "Thin Ring 2", "Thin Ring 3", "Thin Ring 4"],
-			"Thick Rings": ["Thick Ring 1", "Thick Ring 2", "Thick Ring 3", "Thick Ring 4"]
-		},
 		"Spheres" : {
 			"Standard": ["Sphere 1", "Sphere 2", "Sphere 3", "Sphere 4"],
 			"Oblong": ["Oblong Sphere 1", "Oblong Sphere 2", "Oblong Sphere 3", "Oblong Sphere 4"]
@@ -37,6 +33,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : ".005 .005 .005",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.00 -.98"
 		},
 		{
@@ -50,6 +47,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : ".007 .007 .007",
+			"rotation":"0 0 0",
 			"position" : "0.46 1.00 -.98"
 		},
 		{
@@ -63,6 +61,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : "0.01 0.01 0.01",
+			"rotation":"0 180 0",
 			"position" : "0.4 1 -0.98"
 		},
 		{
@@ -76,6 +75,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : "0.005 0.005 0.005",
+			"rotation":"0 0 0",
 			"position" : "0.48 1.33 -0.98"
 		},
 		{
@@ -89,6 +89,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : "0.01 0.01 0.01",
+			"rotation":"0 0 0",
 			"position" : "0.44 1 -1.04"
 		},
 		{
@@ -101,8 +102,9 @@
 			"objmodel": "obj: #trophy-obj; mtl: #trophy-mtl",
 			"material" : "",
 			"geometry" : "",
-			"scale" : "0.01 0.01 0.01",
-			"position" : "0.59 1 -0.98"
+			"scale" : "0.005 0.005 0.005",
+			"rotation":"270 180 0",
+			"position" : "0.52 1 -0.98"
 		},
 		{
 			"name" : "Footbones",
@@ -115,6 +117,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : "0.005 0.005 0.005",
+			"rotation":"0 0 0",
 			"position" : "0.46 1.1 -0.98"
 		},
 		{
@@ -128,6 +131,7 @@
 			"material" : "",
 			"geometry" : "",
 			"scale" : "0.005 0.005 0.005",
+			"rotation":"0 0 0",
 			"position" : "0.52 1 -0.98"
 		},
 	
@@ -142,6 +146,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:1;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -155,6 +160,7 @@
 			"material" : "color:#0000ff;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:1;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -168,6 +174,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:1;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -181,6 +188,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:1;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -194,6 +202,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:2;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -207,6 +216,7 @@
 			"material" : "color:#0000ff;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:2;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -220,6 +230,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:2;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -233,6 +244,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:box;width:1;height:2;depth:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -246,6 +258,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:.25",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -259,6 +272,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:.25",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -272,6 +286,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:.25",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -285,6 +300,7 @@
 			"material" : "color:#0000ff;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:.25",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -298,6 +314,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -311,6 +328,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -324,6 +342,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -337,112 +356,10 @@
 			"material" : "color:#0000ff;opacity:0.5",
 			"geometry" : "primitive:cylinder;height:1;radius:1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
-		{
-			"name" : "Thin Ring 1",
-			"id" : "thinring1",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#ffffff;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=1.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thin Ring 2",
-			"id" : "thinring2",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#ff0000;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=1.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thin Ring 3",
-			"id" : "thinring3",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#00ff00;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=1.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thin Ring 4",
-			"id" : "thinring4",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#0000ff;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=1.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thick Ring 1",
-			"id" : "thickring1",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#ffffff;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=2.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thick Ring 2",
-			"id" : "thickring2",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#ff0000;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=2.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thick Ring 3",
-			"id" : "thickring3",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#00ff00;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=2.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
-		{
-			"name" : "Thick Ring 4",
-			"id" : "thickring4",
-			"objid" : "",
-			"mtlid" : "",
-			"objpath" : "",
-			"mtlpath" : "",
-			"objmodel": "",
-			"material" : "color:#0000ff;opacity:0.5",
-			"geometry" : "primitive:ring;radius-inner=1;radius-outer=2.5",
-			"scale" : ".25 .25 .25",
-			"position" : "0.59 1.26 -.89"
-		},
+		
 		{
 			"name" : "Sphere 1",
 			"id" : "sphere1",
@@ -454,6 +371,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -467,6 +385,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -480,6 +399,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -493,6 +413,7 @@
 			"material" : "color:#0000ff;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -506,6 +427,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1;segments-height=9",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -519,6 +441,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1;segments-height=9",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -532,6 +455,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1;segments-height=9",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -545,6 +469,7 @@
 			"material" : "color:#0000ff;opacity:0.5",
 			"geometry" : "primitive:sphere;radius=1;segments-height=9",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -558,6 +483,7 @@
 			"material" : "color:#ffffff;opacity:0.5",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -571,6 +497,7 @@
 			"material" : "color:#ff0000;opacity:0.5",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -584,6 +511,7 @@
 			"material" : "color:#00ff00;opacity:0.5",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -597,6 +525,7 @@
 			"material" : "color:#0000ff;opacity:0.5;",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -610,6 +539,7 @@
 			"material" : "color:#ffffff;opacity:0.5;metalness=1",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -623,6 +553,7 @@
 			"material" : "color:#ff0000;opacity:0.5;metalness=1",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -636,6 +567,7 @@
 			"material" : "color:#00ff00;opacity:0.5;metalness=1",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		},
 		{
@@ -649,6 +581,7 @@
 			"material" : "color:#0000ff;opacity:0.5;metalness=1",
 			"geometry" : "primitive:torusKnot;",
 			"scale" : ".25 .25 .25",
+			"rotation":"0 0 0",
 			"position" : "0.59 1.26 -.89"
 		}
 	]
