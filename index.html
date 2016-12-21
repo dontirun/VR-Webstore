@@ -364,115 +364,123 @@
 
   // Panel Listeners
   document.querySelector('#blPanel').addEventListener('click', function(){
-    if(activePanel == "blPanel"){
-      aScene.removeChild(currentObject);
-      document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[0]);
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
+    if(MyControllers.storedPanels[0] !== ""){
+      if(activePanel == "blPanel"){
+        aScene.removeChild(currentObject);
+        document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[0]);
+        var galleryMesh = document.createElement("a-plane");
+        galleryMesh.setAttribute("id", "hidden");
+        galleryMesh.setAttribute("visible", "false");
+        aScene.appendChild(galleryMesh);
+        currentObject = document.getElementById("hidden");
 
-      activePanel = '';
-    }
-    else{
-      aScene.removeChild(currentObject);
-      refreshPanelText();
-      document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-      var oReq = new XMLHttpRequest();
-      function tempReqListener(){
-        var objValues = JSON.parse(this.responseText);
-        createObject(objValues);
-        activePanel = 'blPanel';
+        activePanel = '';
       }
-      oReq.addEventListener("load", tempReqListener);
-      oReq.open("POST", "/getobject", true);
-      oReq.send('getobject=' + MyControllers.storedPanels[0]);
+      else{
+        aScene.removeChild(currentObject);
+        refreshPanelText();
+        document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
+        var oReq = new XMLHttpRequest();
+        function tempReqListener(){
+          var objValues = JSON.parse(this.responseText);
+          createObject(objValues);
+          activePanel = 'blPanel';
+        }
+        oReq.addEventListener("load", tempReqListener);
+        oReq.open("POST", "/getobject", true);
+        oReq.send('getobject=' + MyControllers.storedPanels[0]);
+      }
     }
   });
 
   document.querySelector('#tlPanel').addEventListener('click', function(){
-    if(activePanel == "tlPanel"){
-      aScene.removeChild(currentObject);
-      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[1]);
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
+    if(MyControllers.storedPanels[1] !== ""){
+      if(activePanel == "tlPanel"){
+        aScene.removeChild(currentObject);
+        document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[1]);
+        var galleryMesh = document.createElement("a-plane");
+        galleryMesh.setAttribute("id", "hidden");
+        galleryMesh.setAttribute("visible", "false");
+        aScene.appendChild(galleryMesh);
+        currentObject = document.getElementById("hidden");
 
-      activePanel = '';
-    }
-    else{
-      aScene.removeChild(currentObject);
-      refreshPanelText();
-      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-      var oReq = new XMLHttpRequest();
-      function tempReqListener(){
-        var objValues = JSON.parse(this.responseText);
-        createObject(objValues);
-        activePanel = 'tlPanel';
+        activePanel = '';
       }
-      oReq.addEventListener("load", tempReqListener);
-      oReq.open("POST", "/getobject", true);
-      oReq.send('getobject=' + MyControllers.storedPanels[1]);
-    }
-  });
-
-  document.querySelector('#trPanel').addEventListener('click', function(){
-    if(activePanel == "trPanel"){
-      aScene.removeChild(currentObject);
-      document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[2]);
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
-
-      activePanel = '';
-    }
-    else{
-      aScene.removeChild(currentObject);
-      refreshPanelText();
-      document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-      var oReq = new XMLHttpRequest();
-      function tempReqListener(){
-        var objValues = JSON.parse(this.responseText);
-        console.log(objValues);
-        createObject(objValues);
-        activePanel = 'trPanel';
+      else{
+        aScene.removeChild(currentObject);
+        refreshPanelText();
+        document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
+        var oReq = new XMLHttpRequest();
+        function tempReqListener(){
+          var objValues = JSON.parse(this.responseText);
+          createObject(objValues);
+          activePanel = 'tlPanel';
+        }
+        oReq.addEventListener("load", tempReqListener);
+        oReq.open("POST", "/getobject", true);
+        oReq.send('getobject=' + MyControllers.storedPanels[1]);
       }
-      oReq.addEventListener("load", tempReqListener);
-      oReq.open("POST", "/getobject", true);
-      oReq.send('getobject=' + MyControllers.storedPanels[2]);
+    }
+    });
+
+    document.querySelector('#trPanel').addEventListener('click', function(){
+    if(MyControllers.storedPanels[2] !== ""){
+      if(activePanel == "trPanel"){
+        aScene.removeChild(currentObject);
+        document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[2]);
+        var galleryMesh = document.createElement("a-plane");
+        galleryMesh.setAttribute("id", "hidden");
+        galleryMesh.setAttribute("visible", "false");
+        aScene.appendChild(galleryMesh);
+        currentObject = document.getElementById("hidden");
+
+        activePanel = '';
+      }
+      else{
+        aScene.removeChild(currentObject);
+        refreshPanelText();
+        document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
+        var oReq = new XMLHttpRequest();
+        function tempReqListener(){
+          var objValues = JSON.parse(this.responseText);
+          console.log(objValues);
+          createObject(objValues);
+          activePanel = 'trPanel';
+        }
+        oReq.addEventListener("load", tempReqListener);
+        oReq.open("POST", "/getobject", true);
+        oReq.send('getobject=' + MyControllers.storedPanels[2]);
+      }
     }
   });
 
   document.querySelector('#brPanel').addEventListener('click', function(){
-    if(activePanel == "brPanel"){
-      aScene.removeChild(currentObject);
-      document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[3]);
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
+    if(MyControllers.storedPanels[3] !== ""){
+      if(activePanel == "brPanel"){
+        aScene.removeChild(currentObject);
+        document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:"+MyControllers.storedPanels[3]);
+        var galleryMesh = document.createElement("a-plane");
+        galleryMesh.setAttribute("id", "hidden");
+        galleryMesh.setAttribute("visible", "false");
+        aScene.appendChild(galleryMesh);
+        currentObject = document.getElementById("hidden");
 
-      activePanel = '';
-    }
-    else{
-      aScene.removeChild(currentObject);
-      refreshPanelText();
-      document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-      var oReq = new XMLHttpRequest();
-      function tempReqListener(){
-        var objValues = JSON.parse(this.responseText);
-        createObject(objValues);
-        activePanel = 'brPanel';
+        activePanel = '';
       }
-      oReq.addEventListener("load", tempReqListener);
-      oReq.open("POST", "/getobject", true);
-      oReq.send('getobject=' + MyControllers.storedPanels[3]);
+      else{
+        aScene.removeChild(currentObject);
+        refreshPanelText();
+        document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
+        var oReq = new XMLHttpRequest();
+        function tempReqListener(){
+          var objValues = JSON.parse(this.responseText);
+          createObject(objValues);
+          activePanel = 'brPanel';
+        }
+        oReq.addEventListener("load", tempReqListener);
+        oReq.open("POST", "/getobject", true);
+        oReq.send('getobject=' + MyControllers.storedPanels[3]);
+      }
     }
   });
   
