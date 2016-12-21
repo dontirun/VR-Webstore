@@ -1,7 +1,7 @@
 {
 	"Categories" : {
 		"Objects" : {
-			"Heros": ["Iron Man", "Hulk", "Crash", "Beethoven"],
+			"Heroes": ["Iron Man", "Hulk", "Crash", "Beethoven"],
 			"Other": ["Cat", "Trophy", "Footbones", "Cow"]
 		},
 		"Boxes" : {

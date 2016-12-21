@@ -212,6 +212,19 @@
       <a-entity position="-0.69 0.88 -0.46" rotation="90 0 0" scale="0.2 0.2 0.2" id="rotLeft" geometry="primitive:box;height:0.2" material="color:#63c9f2" color="#63c9f2">
         <a-plane position="0 0.11 0" rotation="270 0 0" scale="1 1 1"  material="src:#rotLeftTex" geometry="primitive:plane"></a-plane>
       </a-entity>
+
+      <!--Scale buttons-->
+      <a-entity position="-0.19 0.88 -0.46" rotation="90 0 0" scale="0.2 0.2 0.2" id="scaleUp" geometry="primitive:box;height:0.2" material="color:#63c9f2" color="#63c9f2">
+        <a-plane position="0 0.11 0" rotation="270 0 0" scale="1 1 1"  material="color:#63c9f2" geometry="primitive:plane">
+          <a-entity bmfont-text="text:Scale Up;align:'left';width:120" position="-0.36 -0.2 .02" rotation="0 0 0" scale="1.5 1.5 1.5" id="scaleUpText"></a-entity>        
+        </a-plane>      
+      </a-entity>
+
+      <a-entity position="0.01 0.88 -0.46" rotation="90 0 0" scale="0.2 0.2 0.2" id="scaleDown" geometry="primitive:box;height:0.2" material="color:#63c9f2" color="#63c9f2">
+        <a-plane position="0 0.11 0" rotation="270 0 0" scale="1 1 1"  material="color:#63c9f2" geometry="primitive:plane">
+          <a-entity bmfont-text="text:Scale Down;align:'left';width:120" position="-0.36 -0.2 .02" rotation="0 0 0" scale="1.5 1.5 1.5" id="scaleDownText"></a-entity>        
+        </a-plane>
+      </a-entity>
             <a-entity light="color:#FFF;intensity:0.6;type:point" position="0.07 7.07 -0.5"></a-entity>
             <a-entity light="color:#BBB;intensity:0.5;type:ambient"  position="0 0 0"></a-entity>
         
@@ -251,6 +264,14 @@
     });
     document.querySelector('#rotRight').addEventListener('click', function () {
       rotateRight(currentObject);
+    });
+
+    // Scale up and down handlers
+    document.querySelector('#scaleUp').addEventListener('click', function () {
+      scaleUP(currentObject);
+    });
+    document.querySelector('#scaleDown').addEventListener('click', function () {
+      scaleDOWN(currentObject);
     });
 
     function createObject(objvalues){
@@ -298,6 +319,32 @@
       }
       else{
         scene_element.setAttribute("rotation", "0 90 0");
+      }
+    }
+
+     function scaleUP(scene_element){
+      var scale = scene_element.getAttribute("scale");
+      if(scale != null){
+        var scale_x = scale.x * 1.05;
+        var scale_y = scale.y * 1.05;
+        var scale_z = scale.z * 1.05
+        scene_element.setAttribute("scale", scale_x+" "+scale_y+" "+scale_z);
+      }
+      else{
+        scene_element.setAttribute("scale", "1 1 1");
+      }
+    }
+
+    function scaleDOWN(scene_element){
+      var scale = scene_element.getAttribute("scale");
+      if(scale != null){
+        var scale_x = scale.x / 1.05;
+        var scale_y = scale.y / 1.05;
+        var scale_z = scale.z / 1.05
+        scene_element.setAttribute("scale", scale_x+" "+scale_y+" "+scale_z);
+      }
+      else{
+        scene_element.setAttribute("scale", "1 1 1");
       }
     }
 
@@ -483,121 +530,6 @@
       }
     }
   });
-  
-  /*
-  document.querySelector('#blPanel').addEventListener('click', function () {
-    if(currentObject.id == "testPlane" ){
-      aScene.removeChild(currentObject);
-      document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:");
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
-    }
-    else {
-      aScene.removeChild(currentObject);
-      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:");
-      document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:");
-      document.querySelector('#blPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-      document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:");
-      var galleryMesh = document.createElement("a-entity");
-      galleryMesh.setAttribute("id", "testPlane");
-      galleryMesh.setAttribute("obj-model", "obj: #gallery-obj; mtl: #gallery-mtl");
-      galleryMesh.setAttribute("position", "0.59 1.00 -.98");
-      galleryMesh.setAttribute("scale", ".005 .005 .005");
-      aScene.appendChild(galleryMesh);
-      tempPlane2 = true;
-      currentObject = document.getElementById("testPlane");
-      }
-    });
-  document.querySelector('#tlPanel').addEventListener('click', function () {
-    
-    if(currentObject.id == "testPlane1" ){
-      aScene.removeChild(currentObject);
-      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:");
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
-    }
-    else{
-        aScene.removeChild(currentObject);
-        document.querySelector('#tlPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-        document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:");
-        document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:");
-        document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:");
-        
-        var galleryMesh = document.createElement("a-entity");
-        galleryMesh.setAttribute("id", "testPlane1");
-        galleryMesh.setAttribute("material", "color:#0335fc;opacity:0.5");
-        galleryMesh.setAttribute("position", "0.59 1.26 -.89");
-        galleryMesh.setAttribute("geometry","box:sphere;width:1.7;height:2;depth:0.05");
-        galleryMesh.setAttribute("scale", "0.25 0.25 .25");
-        aScene.appendChild(galleryMesh);
-        tempPlane2 = true;
-        currentObject = document.getElementById("testPlane1");
-    }
-    
-  });
-    document.querySelector('#trPanel').addEventListener('click', function () {
-    
-    if(currentObject.id == "testPlane2" ){
-      aScene.removeChild(currentObject);
-      document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:");
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
-    }
-    else{
-        aScene.removeChild(currentObject);
-        document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:");
-        document.querySelector('#trPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-        document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:");
-        document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:");
-        var galleryMesh = document.createElement("a-entity");
-        galleryMesh.setAttribute("id", "testPlane2");
-        galleryMesh.setAttribute("material", "color:#ff0000;opacity:0.5");
-        galleryMesh.setAttribute("position", "0.59 1.26 -.89");
-        galleryMesh.setAttribute("geometry","primitive:sphere;width:1.7;height:2;depth:0.05");
-        galleryMesh.setAttribute("scale", "0.25 0.25 .25");
-        aScene.appendChild(galleryMesh);
-        tempPlane2 = true;
-        currentObject = document.getElementById("testPlane2");
-    }
-  });
-  document.querySelector('#brPanel').addEventListener('click', function () {
-  if(currentObject.id == "testPlane3" ){
-      aScene.removeChild(currentObject);
-      document.querySelector('#brPanelSub').setAttribute("bmfont-text","text:");
-      var galleryMesh = document.createElement("a-plane");
-      galleryMesh.setAttribute("id", "hidden");
-      galleryMesh.setAttribute("visible", "false");
-      aScene.appendChild(galleryMesh);
-      currentObject = document.getElementById("hidden");
-    }
-  else{
-      aScene.removeChild(currentObject);
-      document.querySelector('#tlPanelSub').setAttribute("bmfont-text","text:");
-      document.querySelector('#trPanelSub').setAttribute("bmfont-text","text:");
-      document.querySelector('#blPanelSub').setAttribute("bmfont-text","text:");
-      document.querySelector('#brPanelSub').setAttribute("bmfont-text","width:200;text: Click to Delete ; align:'left'");
-      var galleryMesh = document.createElement("a-entity");
-      galleryMesh.setAttribute("id", "testPlane3");
-      galleryMesh.setAttribute("material", "color:#00ff00;opacity:0.5");
-      galleryMesh.setAttribute("position", "0.59 1.26 -.89");
-      galleryMesh.setAttribute("geometry","primitive:ring;width:1.7;height:2;depth:0.05");
-      galleryMesh.setAttribute("scale", "0.25 0.25 .25");
-      aScene.appendChild(galleryMesh);
-      tempPlane2 = true;
-      currentObject = document.getElementById("testPlane3");
-  }
-});
-*/
-
 
 // clock functions
 function startTime() {
