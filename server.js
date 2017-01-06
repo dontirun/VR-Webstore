@@ -35,6 +35,12 @@ var server = http.createServer (function (req, res) {
     case '/':
       sendFile(res, 'index.html');
       break;
+    case '/README':
+      sendFile2(res, 'README.md');
+      break;
+    case '/readme':
+      sendFile2(res, 'README.md');
+      break;
     case '/index.html':
       sendFile(res, 'index.html');
       break;
@@ -171,4 +177,19 @@ function sendFile(res, filename, contentType) {
     res.end(content, 'utf-8')
   })
 
+}
+
+function sendFile2(res, filename, contentType) {
+  contentType = contentType || 'text/html'
+  
+  var stream = fs.createReadStream(filename)
+
+  stream.on('data', function(data) {
+    res.write(data);
+  })
+
+  stream.on('end', function(data) {
+    res.end();
+    return;
+  })
 }
